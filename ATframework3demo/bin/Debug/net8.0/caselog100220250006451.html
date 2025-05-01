@@ -1,0 +1,198 @@
+<!DOCTYPE html><div style="color: #000000">[10.02.2025 12:06:45.681][INFO] ---------------Запуск кейса 'Создание комментария под постом в ленте от другого юзера'---------------</div>
+<div style="color: #000000">[10.02.2025 12:06:45.688][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[10.02.2025 12:07:02.838][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[10.02.2025 12:07:02.920][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[10.02.2025 12:07:04.072][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:07:04.134][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:07:04.462][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:07:05.654][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:07:05.696][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:07:39.156][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CModule::IncludeModule("blog");</div>
+<div style="color: #000000">CModule::IncludeModule("socialnetwork");</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">//определяем id блога</div>
+<div style="color: #000000">$arBlog = CBlog::GetByOwnerID(1);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields= array(</div>
+<div style="color: #000000">"TITLE" => "Заголовок 10022025000739",</div>
+<div style="color: #000000">"DETAIL_TEXT" => "Описание 10022025000739",</div>
+<div style="color: #000000">"DATE_PUBLISH" => date('d.m.Y H:i:s'),</div>
+<div style="color: #000000">"PUBLISH_STATUS" => "P",</div>
+<div style="color: #000000">"PERMS_POST" => Array(),</div>
+<div style="color: #000000">"PERMS_COMMENT" => Array (),</div>
+<div style="color: #000000">"SOCNET_RIGHTS" => Array</div>
+<div style="color: #000000">(</div>
+<div style="color: #000000">"UA", "G2"</div>
+<div style="color: #000000">),</div>
+<div style="color: #000000">"=DATE_CREATE" => "now()",</div>
+<div style="color: #000000">"AUTHOR_ID" => $USER->GetID(),</div>
+<div style="color: #000000">"BLOG_ID" => $arBlog['ID'],</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$newID= CBlogPost::Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields["ID"] = $newID;</div>
+<div style="color: #000000">$arParamsNotify = Array(</div>
+<div style="color: #000000">"bSoNet" => true,</div>
+<div style="color: #000000">"UserID" => $USER->GetID(),</div>
+<div style="color: #000000">"user_id" => $USER->GetID(),</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CBlogPost::Notify($arFields, array(), $arParamsNotify);</div>
+<div style="color: #000000">[10.02.2025 12:08:07.360][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[10.02.2025 12:08:07.658][INFO] Добавление пользователя ИванXIIXXXXVVIIIVII ЧёXIIXXXXVVIIIVII на портал скриптом</div>
+<div style="color: #000000">[10.02.2025 12:08:07.659][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["ADD_NAME"] = 'ИванXIIXXXXVVIIIVII';</div>
+<div style="color: #000000">$arFields["ADD_LAST_NAME"] = 'ЧёXIIXXXXVVIIIVII';</div>
+<div style="color: #000000">$arFields["ADD_EMAIL"] = 'bx1ivanchyox-10022025120807@test.com';</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = '1';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($arFields["DEPARTMENT_ID"] == 0)</div>
+<div style="color: #000000">unset($arFields["DEPARTMENT_ID"]);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = [$arFields["DEPARTMENT_ID"]];</div>
+<div style="color: #000000">$SITE_ID = "s1";</div>
+<div style="color: #000000">$strError = "";</div>
+<div style="color: #000000">$userID = 0;</div>
+<div style="color: #000000">$userLogin = $arFields["ADD_EMAIL"];</div>
+<div style="color: #000000">$userID = CIntranetInviteDialog::AddNewUser($SITE_ID, $arFields, $strError);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($userID > 0) {</div>
+<div style="color: #000000">echo "Пользователь ";</div>
+<div style="color: #000000">echo $userLogin;</div>
+<div style="color: #000000">echo " успешно добавлен на портал с ID ";</div>
+<div style="color: #000000">if(is_array($userID))</div>
+<div style="color: #000000">echo $userID[0];</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $userID;</div>
+<div style="color: #000000">echo "<br/>";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($strError != "")</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if(is_array($strError))</div>
+<div style="color: #000000">print_r($strError);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $strError;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[10.02.2025 12:08:26.831][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь bx1ivanchyox-10022025120807@test.com успешно добавлен на портал с ID 21<br/></div>
+<div style="color: #000000">[10.02.2025 12:08:26.915][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-10022025120807@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[10.02.2025 12:08:29.130][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"21"}]</div>
+<div style="color: #000000">[10.02.2025 12:08:30.092][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT GROUP_ID from b_user_group WHERE USER_ID = '21'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[10.02.2025 12:08:32.945][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"GROUP_ID":"3"},{"GROUP_ID":"4"}]</div>
+<div style="color: #000000">[10.02.2025 12:08:32.966][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["PASSWORD"] = '8]i<,?iD,aA1';</div>
+<div style="color: #000000">$groupIDS = '3,4';</div>
+<div style="color: #000000">$userID = '21';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser = new CUser;</div>
+<div style="color: #000000">$arGroupsIDs = explode(",", $groupIDS);</div>
+<div style="color: #000000">$rsUser = CUser::GetByID($userID);</div>
+<div style="color: #000000">$arUser = $rsUser->Fetch();</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">foreach ($arFields as $key => $value)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if($key != "PASSWORD")</div>
+<div style="color: #000000">$arUser[$key] = $value;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$fields = array(</div>
+<div style="color: #000000">"NAME" => $arUser["NAME"],</div>
+<div style="color: #000000">"LAST_NAME" => $arUser["LAST_NAME"],</div>
+<div style="color: #000000">"EMAIL" => $arUser["EMAIL"],</div>
+<div style="color: #000000">"LOGIN" => $arUser["LOGIN"],</div>
+<div style="color: #000000">"LID" => $arUser["LID"],</div>
+<div style="color: #000000">"ACTIVE" => $arUser["ACTIVE"],</div>
+<div style="color: #000000">"GROUP_ID" => $arGroupsIDs,</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if($arFields["PASSWORD"] != null)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">$fields["PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">$fields["CONFIRM_PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser->Update($userID, $fields);</div>
+<div style="color: #000000">$res = $objUser->Login($arUser["EMAIL"], $newPassword);</div>
+<div style="color: #000000">if (!is_array($res)) {</div>
+<div style="color: #000000">echo "Успешная авторизация";</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Авторизация не удалась:\n";</div>
+<div style="color: #000000">print_r($res);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[10.02.2025 12:08:57.762][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Успешная авторизация</div>
+<div style="color: #000000">[10.02.2025 12:08:57.836][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("UPDATE b_user SET CONFIRM_CODE = '' WHERE LOGIN = 'bx1ivanchyox-10022025120807@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[10.02.2025 12:09:04.840][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[]</div>
+<div style="color: #000000">[10.02.2025 12:09:04.842][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT ID from b_group WHERE STRING_ID = 'EMPLOYEES_s1'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[10.02.2025 12:09:13.999][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"12"}]</div>
+<div style="color: #000000">[10.02.2025 12:09:14.124][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-10022025120807@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[10.02.2025 12:09:24.878][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"21"}]</div>
+<div style="color: #000000">[10.02.2025 12:09:24.892][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CUser::AppendUserGroup(21, 12)</div>
+<div style="color: #000000">[10.02.2025 12:09:30.512][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[10.02.2025 12:09:30.515][INFO] Пользователь ИванXIIXXXXVVIIIVII ЧёXIIXXXXVVIIIVII успешно добавлен на портал</div>
+<div style="color: #000000">[10.02.2025 12:09:31.430][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[10.02.2025 12:09:31.464][INFO] Ожидание отображения элемента 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[10.02.2025 12:09:32.114][INFO] Ожидание отображения элемента 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[10.02.2025 12:09:32.516][INFO] Click: 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[10.02.2025 12:10:02.392][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[10.02.2025 12:10:30.111][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[10.02.2025 12:10:30.237][INFO] Ввод текста 'bx1ivanchyox-10022025120807@test.com' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[10.02.2025 12:10:31.459][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:10:31.556][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:10:31.594][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:10:32.961][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:10:33.012][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[10.02.2025 12:10:59.927][INFO] Наведение курсора мыши: 'Кнопка Добавить комментарий на главной странице' локаторы: //a[@class='feed-com-add-link']</div>
+<div style="color: #000000">[10.02.2025 12:11:04.136][INFO] Ожидание отображения элемента 'Кнопка Добавить комментарий на главной странице' локаторы: //a[@class='feed-com-add-link']</div>
+<div style="color: #000000">[10.02.2025 12:11:04.337][INFO] Click: 'Кнопка Добавить комментарий на главной странице' локаторы: //a[@class='feed-com-add-link']</div>
+<div style="color: #000000">[10.02.2025 12:11:05.655][INFO] SwitchToFrame: 'Фрейм с полем для ввода комментария' локаторы: //iframe[@class='bx-editor-iframe']</div>
+<div style="color: #000000">[10.02.2025 12:11:06.296][INFO] Ожидание пропадания элемента 'Поле добавления комментария' локаторы: //body[@contenteditable='true']</div>
+<div style="color: #000000">[10.02.2025 12:11:17.058][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #FF0000">[10.02.2025 12:11:23.899][ERROR] Кейс не пройден, причина:</div>
+<div style="color: #FF0000">System.Exception: Не удалось дождаться появления Поле добавления комментария</div>
+<div style="color: #FF0000">at ATframework3demo.PageObjects.FeedPostForm.WriteComment(Bitrix24WriteComment feedCom) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\PageObjects\FeedPostForm.cs:line 22</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateComment.CreateComment(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateComment.cs:line 60</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateComment.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateComment.cs:line 16</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 61</div>
+<div style="color: #000000">[10.02.2025 12:11:24.295][INFO] ---------------Кейс 'Создание комментария под постом в ленте от другого юзера' завершён---------------</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html><div style="color: #000000">[15.03.2025 12:37:44.098][INFO] ---------------Запуск кейса 'Запуск робота Запланировать дело в CRM с проверкой его выполнения'---------------</div>
+<div style="color: #000000">[15.03.2025 12:37:44.103][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[15.03.2025 12:37:52.640][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[15.03.2025 12:37:52.687][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[15.03.2025 12:37:53.812][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:37:53.854][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:37:53.879][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:37:55.280][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:37:55.308][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:38:50.783][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CModule::IncludeModule('crm');</div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"TITLE" => "Сделка 15032025003850",</div>
+<div style="color: #000000">"TYPE_ID" => "SALE",</div>
+<div style="color: #000000">"STAGE_ID" => "NEW",</div>
+<div style="color: #000000">"OPPORTUNITY" => 10000,</div>
+<div style="color: #000000">"CURRENCY_ID" => "RUB",</div>
+<div style="color: #000000">"ASSIGNED_BY_ID" => 1,</div>
+<div style="color: #000000">"OPENED" => "Y",</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000">$deal = new CCrmDeal(false);</div>
+<div style="color: #000000">$dealId = $deal->Add($arFields);</div>
+<div style="color: #000000">if ($dealId) {</div>
+<div style="color: #000000">echo "Сделка успешно создана! ID сделки: " . $dealId;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">global $APPLICATION;</div>
+<div style="color: #000000">echo "Ошибка при создании сделки: " . $APPLICATION->GetException()->GetString();</div>
+<div style="color: #000000">}</div>

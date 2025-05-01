@@ -1,0 +1,210 @@
+<!DOCTYPE html><div style="color: #000000">[15.03.2025 12:23:47.209][INFO] ---------------Запуск кейса 'Запуск робота Запланировать дело в CRM с проверкой его выполнения'---------------</div>
+<div style="color: #000000">[15.03.2025 12:23:47.247][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[15.03.2025 12:23:55.362][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[15.03.2025 12:23:55.469][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[15.03.2025 12:23:56.691][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:23:56.735][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:23:56.764][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:23:57.947][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:23:57.979][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[15.03.2025 12:24:35.237][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CModule::IncludeModule('crm');</div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"TITLE" => "Сделка 15032025002435",</div>
+<div style="color: #000000">"TYPE_ID" => "SALE",</div>
+<div style="color: #000000">"STAGE_ID" => "NEW",</div>
+<div style="color: #000000">"OPPORTUNITY" => 10000,</div>
+<div style="color: #000000">"CURRENCY_ID" => "RUB",</div>
+<div style="color: #000000">"ASSIGNED_BY_ID" => 1,</div>
+<div style="color: #000000">"OPENED" => "Y",</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000">$deal = new CCrmDeal(false);</div>
+<div style="color: #000000">$dealId = $deal->Add($arFields);</div>
+<div style="color: #000000">if ($dealId) {</div>
+<div style="color: #000000">echo "Сделка успешно создана! ID сделки: " . $dealId;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">global $APPLICATION;</div>
+<div style="color: #000000">echo "Ошибка при создании сделки: " . $APPLICATION->GetException()->GetString();</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[15.03.2025 12:24:52.136][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Сделка успешно создана! ID сделки: 42</div>
+<div style="color: #000000">[15.03.2025 12:24:52.343][INFO] Добавление пользователя ИванXVIIIXXXXVXXIVLII ЧёXVIIIXXXXVXXIVLII на портал скриптом</div>
+<div style="color: #000000">[15.03.2025 12:24:52.344][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["ADD_NAME"] = 'ИванXVIIIXXXXVXXIVLII';</div>
+<div style="color: #000000">$arFields["ADD_LAST_NAME"] = 'ЧёXVIIIXXXXVXXIVLII';</div>
+<div style="color: #000000">$arFields["ADD_EMAIL"] = 'bx1ivanchyox-15032025122452@test.com';</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = '1';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($arFields["DEPARTMENT_ID"] == 0)</div>
+<div style="color: #000000">unset($arFields["DEPARTMENT_ID"]);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = [$arFields["DEPARTMENT_ID"]];</div>
+<div style="color: #000000">$SITE_ID = "s1";</div>
+<div style="color: #000000">$strError = "";</div>
+<div style="color: #000000">$userID = 0;</div>
+<div style="color: #000000">$userLogin = $arFields["ADD_EMAIL"];</div>
+<div style="color: #000000">$userID = CIntranetInviteDialog::AddNewUser($SITE_ID, $arFields, $strError);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($userID > 0) {</div>
+<div style="color: #000000">echo "Пользователь ";</div>
+<div style="color: #000000">echo $userLogin;</div>
+<div style="color: #000000">echo " успешно добавлен на портал с ID ";</div>
+<div style="color: #000000">if(is_array($userID))</div>
+<div style="color: #000000">echo $userID[0];</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $userID;</div>
+<div style="color: #000000">echo "<br/>";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($strError != "")</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if(is_array($strError))</div>
+<div style="color: #000000">print_r($strError);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $strError;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[15.03.2025 12:24:58.287][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь bx1ivanchyox-15032025122452@test.com успешно добавлен на портал с ID 33<br/></div>
+<div style="color: #000000">[15.03.2025 12:24:58.331][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-15032025122452@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[15.03.2025 12:24:59.861][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"33"}]</div>
+<div style="color: #000000">[15.03.2025 12:25:00.377][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT GROUP_ID from b_user_group WHERE USER_ID = '33'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[15.03.2025 12:25:01.637][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"GROUP_ID":"3"},{"GROUP_ID":"4"}]</div>
+<div style="color: #000000">[15.03.2025 12:25:01.643][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["PASSWORD"] = '=!xONFD7,aA1';</div>
+<div style="color: #000000">$groupIDS = '3,4';</div>
+<div style="color: #000000">$userID = '33';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser = new CUser;</div>
+<div style="color: #000000">$arGroupsIDs = explode(",", $groupIDS);</div>
+<div style="color: #000000">$rsUser = CUser::GetByID($userID);</div>
+<div style="color: #000000">$arUser = $rsUser->Fetch();</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">foreach ($arFields as $key => $value)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if($key != "PASSWORD")</div>
+<div style="color: #000000">$arUser[$key] = $value;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$fields = array(</div>
+<div style="color: #000000">"NAME" => $arUser["NAME"],</div>
+<div style="color: #000000">"LAST_NAME" => $arUser["LAST_NAME"],</div>
+<div style="color: #000000">"EMAIL" => $arUser["EMAIL"],</div>
+<div style="color: #000000">"LOGIN" => $arUser["LOGIN"],</div>
+<div style="color: #000000">"LID" => $arUser["LID"],</div>
+<div style="color: #000000">"ACTIVE" => $arUser["ACTIVE"],</div>
+<div style="color: #000000">"GROUP_ID" => $arGroupsIDs,</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if($arFields["PASSWORD"] != null)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">$fields["PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">$fields["CONFIRM_PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser->Update($userID, $fields);</div>
+<div style="color: #000000">$res = $objUser->Login($arUser["EMAIL"], $newPassword);</div>
+<div style="color: #000000">if (!is_array($res)) {</div>
+<div style="color: #000000">echo "Успешная авторизация";</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Авторизация не удалась:\n";</div>
+<div style="color: #000000">print_r($res);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[15.03.2025 12:25:05.986][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Успешная авторизация</div>
+<div style="color: #000000">[15.03.2025 12:25:05.988][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("UPDATE b_user SET CONFIRM_CODE = '' WHERE LOGIN = 'bx1ivanchyox-15032025122452@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[15.03.2025 12:25:08.892][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[]</div>
+<div style="color: #000000">[15.03.2025 12:25:08.901][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT ID from b_group WHERE STRING_ID = 'EMPLOYEES_s1'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[15.03.2025 12:25:10.107][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"12"}]</div>
+<div style="color: #000000">[15.03.2025 12:25:10.129][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-15032025122452@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[15.03.2025 12:25:11.343][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"33"}]</div>
+<div style="color: #000000">[15.03.2025 12:25:11.344][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CUser::AppendUserGroup(33, 12)</div>
+<div style="color: #000000">[15.03.2025 12:25:13.192][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[15.03.2025 12:25:13.193][INFO] Пользователь ИванXVIIIXXXXVXXIVLII ЧёXVIIIXXXXVXXIVLII успешно добавлен на портал</div>
+<div style="color: #000000">[15.03.2025 12:25:13.200][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CModule::IncludeModule('main');</div>
+<div style="color: #000000">$userName = "ИванXVIIIXXXXVXXIVLII";</div>
+<div style="color: #000000">$userLastName = "ЧёXVIIIXXXXVXXIVLII";</div>
+<div style="color: #000000">$groupIds = [10];</div>
+<div style="color: #000000">$filter = [</div>
+<div style="color: #000000">"NAME" => $userName,</div>
+<div style="color: #000000">"LAST_NAME" => $userLastName,</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000">$rsUser = CUser::GetList(($by = "id"), ($order = "asc"), $filter);</div>
+<div style="color: #000000">$arUser = $rsUser->Fetch();</div>
+<div style="color: #000000">$userId = $arUser['ID'];</div>
+<div style="color: #000000">$currentGroups = $user->GetUserGroup($userId);</div>
+<div style="color: #000000">$newGroups = array_unique(array_merge($currentGroups, $groupIds));</div>
+<div style="color: #000000">$result = $user->SetUserGroup($userId, $newGroups);</div>
+<div style="color: #000000">[15.03.2025 12:25:14.302][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[15.03.2025 12:25:14.337][INFO] Ожидание отображения элемента 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[15.03.2025 12:25:14.558][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[15.03.2025 12:25:14.572][INFO] Ожидание отображения элемента 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[15.03.2025 12:25:14.654][INFO] Ожидание отображения элемента 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[15.03.2025 12:25:14.696][INFO] Click: 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[15.03.2025 12:25:23.870][INFO] Ожидание отображения элемента 'Раздел Канбан активный' локаторы: //div[@class = 'ui-nav-panel__item --active' and contains(text(), 'Канбан')]</div>
+<div style="color: #000000">[15.03.2025 12:25:44.479][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[15.03.2025 12:25:44.526][INFO] Ожидание отображения элемента 'стадия сделки - Подготовка документов' локаторы: //div[@class = 'main-kanban-column-title-text-inner' and contains(text(), 'Подготовка документов')]</div>
+<div style="color: #000000">[15.03.2025 12:26:15.906][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[15.03.2025 12:26:15.927][INFO] Ожидание отображения элемента 'Раздел Канбан' локаторы: //div[@class = 'ui-nav-panel__item' and contains(text(), 'Канбан')]</div>
+<div style="color: #000000">[15.03.2025 12:26:16.424][INFO] Ожидание отображения элемента 'Раздел Канбан' локаторы: //div[@class = 'ui-nav-panel__item' and contains(text(), 'Канбан')]</div>
+<div style="color: #000000">[15.03.2025 12:26:16.465][INFO] Click: 'Раздел Канбан' локаторы: //div[@class = 'ui-nav-panel__item' and contains(text(), 'Канбан')]</div>
+<div style="color: #000000">[15.03.2025 12:26:17.655][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[15.03.2025 12:26:25.922][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[15.03.2025 12:26:25.952][INFO] Click: 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[15.03.2025 12:26:27.480][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[15.03.2025 12:26:27.514][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[15.03.2025 12:26:27.543][INFO] Click: 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #FF0000">[15.03.2025 12:26:31.579][ERROR] Кейс не пройден, причина:</div>
+<div style="color: #FF0000">OpenQA.Selenium.ElementClickInterceptedException: element click intercepted: Element <a class="ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn" href="/crm/deal/automation/0/">...</a> is not clickable at point (1393, 227). Other element would receive the click: <div class="side-panel-loader-container" style="background-image: url(&quot;/bitrix/images/bizproc/slider/automation-loader.svg&quot;);"></div></div>
+<div style="color: #FF0000">(Session info: chrome=133.0.6943.127)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.ExecuteAsync(String driverCommandToExecute, Dictionary`2 parameters)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebElement.Execute(String commandToExecute, Dictionary`2 parameters)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebElement.Click()</div>
+<div style="color: #FF0000">at atFrameWork2.SeleniumFramework.BaseItem.<>c.<Click>b__19_0(IWebElement button, IWebDriver drv) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\SeleniumFramework\BaseItem.cs:line 48</div>
+<div style="color: #FF0000">at atFrameWork2.SeleniumFramework.BaseItem.Execute(Action`2 seleniumCode, IWebDriver driver, Boolean throwAtDebug) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\SeleniumFramework\BaseItem.cs:line 130</div>
+<div style="color: #FF0000">at atFrameWork2.SeleniumFramework.BaseItem.Click(IWebDriver driver) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\SeleniumFramework\BaseItem.cs:line 46</div>
+<div style="color: #FF0000">at ATframework3demo.PageObjects.CRMBasePage.OpenCreateRobotPage() in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\PageObjects\CRMBasePage.cs:line 25</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_Robot.LaunchRobot(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_Robot.cs:line 31</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_Robot.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_Robot.cs:line 18</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 61</div>
+<div style="color: #000000">[15.03.2025 12:26:31.580][INFO] ---------------Кейс 'Запуск робота Запланировать дело в CRM с проверкой его выполнения' завершён---------------</div>

@@ -1,0 +1,389 @@
+<!DOCTYPE html><div style="color: #000000">[29.04.2025 09:19:20.429][INFO] ---------------Запуск кейса 'Отправка личного сообщения пользователю'---------------</div>
+<div style="color: #000000">[29.04.2025 09:19:20.436][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[29.04.2025 09:19:25.294][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[29.04.2025 09:19:25.353][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[29.04.2025 09:19:25.386][INFO] Ввод текста '' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[29.04.2025 09:19:26.478][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[29.04.2025 09:19:26.510][INFO] Ввод текста 'admin' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[29.04.2025 09:19:27.597][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[29.04.2025 09:19:27.652][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[29.04.2025 09:19:27.739][INFO] Ввод текста '' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[29.04.2025 09:19:29.386][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[29.04.2025 09:19:29.449][INFO] Ввод текста '1234root' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[29.04.2025 09:19:30.535][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[29.04.2025 09:19:30.582][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[29.04.2025 09:19:30.615][INFO] Click: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[29.04.2025 09:19:34.281][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Подключаем необходимые модели</div>
+<div style="color: #000000">use Up\Roomfy\Model\PostsTable;</div>
+<div style="color: #000000">use Up\Roomfy\Model\PostLocationTable;</div>
+<div style="color: #000000">use Bitrix\Main\Type\DateTime;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Функция для создания тестового объявления с локацией</div>
+<div style="color: #000000">function createTestPostWithLocation($userId, $postTypeId, $title, $description = '', $isActive = true, $isPromoted = false)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">// Создаем основное объявление</div>
+<div style="color: #000000">$postResult = PostsTable::add([</div>
+<div style="color: #000000">'USER_ID' => $userId,</div>
+<div style="color: #000000">'POST_TYPE_ID' => $postTypeId,</div>
+<div style="color: #000000">'TITLE' => $title,</div>
+<div style="color: #000000">'DESCRIPTION' => $description,</div>
+<div style="color: #000000">'IS_ACTIVE' => $isActive ? 'Y' : 'N',</div>
+<div style="color: #000000">'IS_PROMOTED' => $isPromoted ? 'Y' : 'N',</div>
+<div style="color: #000000">'CREATED_AT' => new DateTime(),</div>
+<div style="color: #000000">'UPDATED_AT' => new DateTime(),</div>
+<div style="color: #000000">]);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if (!$postResult->isSuccess())</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">echo "Ошибка при создании объявления: " . implode(', ', $postResult->getErrorMessages()) . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$postId = $postResult->getId();</div>
+<div style="color: #000000">echo "Объявление успешно создано, ID: $postId\n";</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Добавляем локацию к объявлению</div>
+<div style="color: #000000">$locationResult = PostLocationTable::add([</div>
+<div style="color: #000000">'POST_ID' => $postId,</div>
+<div style="color: #000000">'LATITUDE' => 54.7104,</div>
+<div style="color: #000000">'LONGITUDE' => 20.5106,</div>
+<div style="color: #000000">'COUNTRY' => 'Россия',</div>
+<div style="color: #000000">'CITY' => 'Калининград',</div>
+<div style="color: #000000">'STREET' =>  '',</div>
+<div style="color: #000000">'HOUSE_NUMBER' => '',</div>
+<div style="color: #000000">'RADIUS' => 1.0,</div>
+<div style="color: #000000">]);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($locationResult->isSuccess())</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">echo "Локация для объявления успешно добавлена\n";</div>
+<div style="color: #000000">return $postId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">echo "Ошибка при добавлении локации: " . implode(', ', $locationResult->getErrorMessages()) . "\n";</div>
+<div style="color: #000000">// Удаляем созданное объявление, если не удалось добавить локацию</div>
+<div style="color: #000000">PostsTable::delete($postId);</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$userId = 1; // ID пользователя</div>
+<div style="color: #000000">$postTypeId = 1; // ID типа объявления</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Создаем 10 тестовых объявлений в Калининграде</div>
+<div style="color: #000000">for ($i = 1; $i <= 1; $i++) {</div>
+<div style="color: #000000">$title = "Обьявление29042025211934";</div>
+<div style="color: #000000">$description = "Описание29042025211934";</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Создаем объявление с локацией</div>
+<div style="color: #000000">$postId = createTestPostWithLocation(</div>
+<div style="color: #000000">$userId,</div>
+<div style="color: #000000">$postTypeId,</div>
+<div style="color: #000000">$title,</div>
+<div style="color: #000000">$description,</div>
+<div style="color: #000000">true,</div>
+<div style="color: #000000">false</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000">}</div>
+<div style="color: #FF0000">[29.04.2025 09:19:36.144][ERROR] Кейс не пройден, причина:</div>
+<div style="color: #FF0000">System.Exception: php-код не выполнен, ответ сервера:</div>
+<div style="color: #FF0000"><!DOCTYPE html></div>
+<div style="color: #FF0000"><html></div>
+<div style="color: #FF0000"><head></div>
+<div style="color: #FF0000"><meta http-equiv="X-UA-Compatible" content="IE=edge"></div>
+<div style="color: #FF0000"><meta name="viewport" content="initial-scale=1.0, width=device-width"></div>
+<div style="color: #FF0000"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></div>
+<div style="color: #FF0000"><link href="/bitrix/js/ui/design-tokens/dist/ui.design-tokens.min.css?174501003723463" type="text/css"  rel="stylesheet" /></div>
+<div style="color: #FF0000"><link href="/bitrix/panel/main/popup.min.css?174500962820774" type="text/css"  data-template-style="true"  rel="stylesheet" /></div>
+<div style="color: #FF0000"><link href="/bitrix/panel/main/login.min.css?174500962725172" type="text/css"  data-template-style="true"  rel="stylesheet" /></div>
+<div style="color: #FF0000"><script>if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess) {BX.message[i]=mess[i];} return true;}};</script></div>
+<div style="color: #FF0000"><script>(window.BX||top.BX).message({"JS_CORE_LOADING":"Загрузка...","JS_CORE_NO_DATA":"- Нет данных -","JS_CORE_WINDOW_CLOSE":"Закрыть","JS_CORE_WINDOW_EXPAND":"Развернуть","JS_CORE_WINDOW_NARROW":"Свернуть в окно","JS_CORE_WINDOW_SAVE":"Сохранить","JS_CORE_WINDOW_CANCEL":"Отменить","JS_CORE_WINDOW_CONTINUE":"Продолжить","JS_CORE_H":"ч","JS_CORE_M":"м","JS_CORE_S":"с","JSADM_AI_HIDE_EXTRA":"Скрыть лишние","JSADM_AI_ALL_NOTIF":"Показать все","JSADM_AUTH_REQ":"Требуется авторизация!","JS_CORE_WINDOW_AUTH":"Войти","JS_CORE_IMAGE_FULL":"Полный размер"});</script></div>
+<div style="color: #FF0000"><script src="/bitrix/js/main/core/core.min.js?1745009511225353"></script></div>
+<div style="color: #FF0000"><script>BX.Runtime.registerExtension({"name":"main.core","namespace":"BX","loaded":true});</script></div>
+<div style="color: #FF0000"><script>BX.setJSList(["\/bitrix\/js\/main\/core\/core_ajax.js","\/bitrix\/js\/main\/core\/core_promise.js","\/bitrix\/js\/main\/polyfill\/promise\/js\/promise.js","\/bitrix\/js\/main\/loadext\/loadext.js","\/bitrix\/js\/main\/loadext\/extension.js","\/bitrix\/js\/main\/polyfill\/promise\/js\/promise.js","\/bitrix\/js\/main\/polyfill\/find\/js\/find.js","\/bitrix\/js\/main\/polyfill\/includes\/js\/includes.js","\/bitrix\/js\/main\/polyfill\/matches\/js\/matches.js","\/bitrix\/js\/ui\/polyfill\/closest\/js\/closest.js","\/bitrix\/js\/main\/polyfill\/fill\/main.polyfill.fill.js","\/bitrix\/js\/main\/polyfill\/find\/js\/find.js","\/bitrix\/js\/main\/polyfill\/matches\/js\/matches.js","\/bitrix\/js\/main\/polyfill\/core\/dist\/polyfill.bundle.js","\/bitrix\/js\/main\/core\/core.js","\/bitrix\/js\/main\/polyfill\/intersectionobserver\/js\/intersectionobserver.js","\/bitrix\/js\/main\/lazyload\/dist\/lazyload.bundle.js","\/bitrix\/js\/main\/polyfill\/core\/dist\/polyfill.bundle.js","\/bitrix\/js\/main\/parambag\/dist\/parambag.bundle.js"]);</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"><script>BX.Runtime.registerExtension({"name":"ui.design-tokens","namespace":"window","loaded":true});</script></div>
+<div style="color: #FF0000"><script>BX.Runtime.registerExtension({"name":"main.pageobject","namespace":"window","loaded":true});</script></div>
+<div style="color: #FF0000"><script>(window.BX||top.BX).message({"JS_CORE_LOADING":"Загрузка...","JS_CORE_NO_DATA":"- Нет данных -","JS_CORE_WINDOW_CLOSE":"Закрыть","JS_CORE_WINDOW_EXPAND":"Развернуть","JS_CORE_WINDOW_NARROW":"Свернуть в окно","JS_CORE_WINDOW_SAVE":"Сохранить","JS_CORE_WINDOW_CANCEL":"Отменить","JS_CORE_WINDOW_CONTINUE":"Продолжить","JS_CORE_H":"ч","JS_CORE_M":"м","JS_CORE_S":"с","JSADM_AI_HIDE_EXTRA":"Скрыть лишние","JSADM_AI_ALL_NOTIF":"Показать все","JSADM_AUTH_REQ":"Требуется авторизация!","JS_CORE_WINDOW_AUTH":"Войти","JS_CORE_IMAGE_FULL":"Полный размер"});</script></div>
+<div style="color: #FF0000"><script>BX.Runtime.registerExtension({"name":"window","namespace":"window","loaded":true});</script></div>
+<div style="color: #FF0000"><script>BX.Runtime.registerExtension({"name":"admin_login","namespace":"window","loaded":true});</script></div>
+<div style="color: #FF0000"><script>(window.BX||top.BX).message({"LANGUAGE_ID":"ru","FORMAT_DATE":"DD.MM.YYYY","FORMAT_DATETIME":"DD.MM.YYYY HH:MI:SS","COOKIE_PREFIX":"BITRIX_SM","SERVER_TZ_OFFSET":"7200","UTF_MODE":"Y","USER_ID":"","SERVER_TIME":1745954375,"USER_TZ_OFFSET":0,"USER_TZ_AUTO":"Y","bitrix_sessid":"a4f11c6211f80c4325521799367c1784"});</script></div>
+<div style="color: #FF0000"><script src="/bitrix/js/main/pageobject/pageobject.min.js?1745009558570"></script></div>
+<div style="color: #FF0000"><script src="/bitrix/js/main/core/core_window.min.js?174500951576324"></script></div>
+<div style="color: #FF0000"><script src="/bitrix/js/main/core/core_admin_login.min.js?174500951115050"></script></div>
+<div style="color: #FF0000"><title>Авторизация - roomfy.bx</title></div>
+<div style="color: #FF0000"></head></div>
+<div style="color: #FF0000"><body id="bx-admin-prefix"></div>
+<div style="color: #FF0000"><!--[if lte IE 7]></div>
+<div style="color: #FF0000"><style type="text/css"></div>
+<div style="color: #FF0000">#login_wrapper {display:none !important;}</div>
+<div style="color: #FF0000"></style></div>
+<div style="color: #FF0000"><div id="bx-panel-error"></div>
+<div style="color: #FF0000">Административная панель не поддерживает Internet Explorer версии 7 и ниже. Установите современный браузер <a href="http://www.firefox.com">Firefox</a>, <a href="http://www.google.com/chrome/">Chrome</a>, <a href="http://www.opera.com">Opera</a> или <a href="http://www.microsoft.com/windows/internet-explorer/">Microsoft Edge</a>.</div><![endif]--></div>
+<div style="color: #FF0000"><div id="login_wrapper" class="login-page login-page-bg login-main-wrapper"></div>
+<div style="color: #FF0000"><script></div>
+<div style="color: #FF0000">BX.message({</div>
+<div style="color: #FF0000">'admin_authorize_error': 'Ошибка авторизации!',</div>
+<div style="color: #FF0000">'admin_forgot_password_error': 'Ошибка восстановления пароля!',</div>
+<div style="color: #FF0000">'admin_change_password_error': 'Ошибка смены пароля!',</div>
+<div style="color: #FF0000">'admin_authorize_info': 'Информация'</div>
+<div style="color: #FF0000">});</div>
+<div style="color: #FF0000">new BX.adminLogin({</div>
+<div style="color: #FF0000">form: 'form_auth',</div>
+<div style="color: #FF0000">start_form: 'authorize',</div>
+<div style="color: #FF0000">post_data: 'query=require_once%28%24_SERVER%5B%27DOCUMENT_ROOT%27%5D.%27%2Fbitrix%2Fmodules%2Fmain%2Finclude%2Fprolog_before.php%27%29%3B%0D%0A%0D%0A%2F%2F+%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B0%D0%B5%D0%BC+%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D1%8B%D0%B5+%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D0%B8%0D%0Ause+Up%5CRoomfy%5CModel%5CPostsTable%3B%0D%0Ause+Up%5CRoomfy%5CModel%5CPostLocationTable%3B%0D%0Ause+Bitrix%5CMain%5CType%5CDateTime%3B%0D%0A%0D%0A%2F%2F+%D0%A4%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F+%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F+%D1%81+%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D0%B5%D0%B9%0D%0Afunction+createTestPostWithLocation%28%24userId%2C+%24postTypeId%2C+%24title%2C+%24description+%3D+%27%27%2C+%24isActive+%3D+true%2C+%24isPromoted+%3D+false%29%0D%0A%7B%0D%0A++++%2F%2F+%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%B5%D0%BC+%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B5+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%0D%0A++++%24postResult+%3D+PostsTable%3A%3Aadd%28%5B%0D%0A++++++++%27USER_ID%27+%3D%3E+%24userId%2C%0D%0A++++++++%27POST_TYPE_ID%27+%3D%3E+%24postTypeId%2C%0D%0A++++++++%27TITLE%27+%3D%3E+%24title%2C%0D%0A++++++++%27DESCRIPTION%27+%3D%3E+%24description%2C%0D%0A++++++++%27IS_ACTIVE%27+%3D%3E+%24isActive+%3F+%27Y%27+%3A+%27N%27%2C%0D%0A++++++++%27IS_PROMOTED%27+%3D%3E+%24isPromoted+%3F+%27Y%27+%3A+%27N%27%2C%0D%0A++++++++%27CREATED_AT%27+%3D%3E+new+DateTime%28%29%2C%0D%0A++++++++%27UPDATED_AT%27+%3D%3E+new+DateTime%28%29%2C%0D%0A++++%5D%29%3B%0D%0A++++%0D%0A++++if+%28%21%24postResult-%3EisSuccess%28%29%29%0D%0A++++%7B%0D%0A++++++++echo+%22%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0+%D0%BF%D1%80%D0%B8+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%3A+%22+.+implode%28%27%2C+%27%2C+%24postResult-%3EgetErrorMessages%28%29%29+.+%22%5Cn%22%3B%0D%0A++++++++return+false%3B%0D%0A++++%7D%0D%0A++++%0D%0A++++%24postId+%3D+%24postResult-%3EgetId%28%29%3B%0D%0A++++echo+%22%D0%9E%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5+%D1%83%D1%81%D0%BF%D0%B5%D1%88%D0%BD%D0%BE+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%BE%2C+ID%3A+%24postId%5Cn%22%3B%0D%0A++++%0D%0A++++%2F%2F+%D0%94%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D1%8F%D0%B5%D0%BC+%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D1%8E+%D0%BA+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%0D%0A++++%24locationResult+%3D+PostLocationTable%3A%3Aadd%28%5B%0D%0A++++++++%27POST_ID%27+%3D%3E+%24postId%2C%0D%0A++++++++%27LATITUDE%27+%3D%3E+54.7104%2C%0D%0A++++++++%27LONGITUDE%27+%3D%3E+20.5106%2C%0D%0A++++++++%27COUNTRY%27+%3D%3E+%27%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%27%2C%0D%0A++++++++%27CITY%27+%3D%3E+%27%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%27%2C%0D%0A++++++++%27STREET%27+%3D%3E++%27%27%2C%0D%0A++++++++%27HOUSE_NUMBER%27+%3D%3E+%27%27%2C%0D%0A++++++++%27RADIUS%27+%3D%3E+1.0%2C%0D%0A++++%5D%29%3B%0D%0A++++%0D%0A++++if+%28%24locationResult-%3EisSuccess%28%29%29%0D%0A++++%7B%0D%0A++++++++echo+%22%D0%9B%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D1%8F+%D0%B4%D0%BB%D1%8F+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F+%D1%83%D1%81%D0%BF%D0%B5%D1%88%D0%BD%D0%BE+%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B0%5Cn%22%3B%0D%0A++++++++return+%24postId%3B%0D%0A++++%7D%0D%0A++++else%0D%0A++++%7B%0D%0A++++++++echo+%22%D0%9E%D1%88%D0%B8%D0%B1%D0%BA%D0%B0+%D0%BF%D1%80%D0%B8+%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8+%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D0%B8%3A+%22+.+implode%28%27%2C+%27%2C+%24locationResult-%3EgetErrorMessages%28%29%29+.+%22%5Cn%22%3B%0D%0A++++++++%2F%2F+%D0%A3%D0%B4%D0%B0%D0%BB%D1%8F%D0%B5%D0%BC+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%2C+%D0%B5%D1%81%D0%BB%D0%B8+%D0%BD%D0%B5+%D1%83%D0%B4%D0%B0%D0%BB%D0%BE%D1%81%D1%8C+%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C+%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D1%8E%0D%0A++++++++PostsTable%3A%3Adelete%28%24postId%29%3B%0D%0A++++++++return+false%3B%0D%0A++++%7D%0D%0A%7D%0D%0A%24userId+%3D+1%3B+%2F%2F+ID+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%0D%0A%24postTypeId+%3D+1%3B+%2F%2F+ID+%D1%82%D0%B8%D0%BF%D0%B0+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%0D%0A++++%0D%0A++++%2F%2F+%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%B5%D0%BC+10+%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D1%85+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B2+%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D0%B5%0D%0A++++for+%28%24i+%3D+1%3B+%24i+%3C%3D+1%3B+%24i%2B%2B%29+%7B%0D%0A++++++++%24title+%3D+%22%D0%9E%D0%B1%D1%8C%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B529042025211934%22%3B%0D%0A++++++++%24description+%3D+%22%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B529042025211934%22%3B%0D%0A++++++++%0D%0A++++++++%2F%2F+%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%B5%D0%BC+%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5+%D1%81+%D0%BB%D0%BE%D0%BA%D0%B0%D1%86%D0%B8%D0%B5%D0%B9%0D%0A++++++++%24postId+%3D+createTestPostWithLocation%28%0D%0A++++++++++++%24userId%2C+%0D%0A++++++++++++%24postTypeId%2C+%0D%0A++++++++++++%24title%2C+%0D%0A++++++++++++%24description%2C+%0D%0A++++++++++++true%2C+%0D%0A++++++++++++false%0D%0A++++++++%29%3B%0D%0A++++%7D&result_as_text=y&ajax=y&sessid=a4f11c6211f80c4325521799367c1784',</div>
+<div style="color: #FF0000">popup_alignment: 'popup_alignment',</div>
+<div style="color: #FF0000">login_wrapper: 'login_wrapper',</div>
+<div style="color: #FF0000">window_wrapper: 'window_wrapper',</div>
+<div style="color: #FF0000">auth_form_wrapper: 'auth_form_wrapper',</div>
+<div style="color: #FF0000">login_variants: 'login_variants',</div>
+<div style="color: #FF0000">url: '/bitrix/admin/php_command_line.php?lang=ru'</div>
+<div style="color: #FF0000">});</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"><table class="login-popup-alignment"></div>
+<div style="color: #FF0000"><tr></div>
+<div style="color: #FF0000"><td class="login-popup-alignment-2" id="popup_alignment"></div>
+<div style="color: #FF0000"><div class="login-header"></div>
+<div style="color: #FF0000"><a href="/" class="login-logo"></div>
+<div style="color: #FF0000"><span class="login-logo-img"></span><span class="login-logo-text">roomfy.bx</span></div>
+<div style="color: #FF0000"></a></div>
+<div style="color: #FF0000"><div class="login-language-btn-wrap"><div class="login-language-btn" id="login_lang_button">RU</div></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-footer"></div>
+<div style="color: #FF0000"><div class="login-footer-left">  <a href="https://www.1c-bitrix.ru/">1С-Битрикс: Управление сайтом</a>. &copy; Битрикс, 2002-2025</div></div>
+<div style="color: #FF0000"><div class="login-footer-right"></div>
+<div style="color: #FF0000"><a href="https://www.1c-bitrix.ru/support/" class="login-footer-link">Техподдержка</a>					</div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><form name="form_auth" method="post" target="auth_frame" class="bx-admin-auth-form" action="" novalidate></div>
+<div style="color: #FF0000"><input type="hidden" name="AUTH_FORM" value="Y"></div>
+<div style="color: #FF0000"><div id="auth_form_wrapper"></div>
+<div style="color: #FF0000"><div class="login-main-popup-wrap login-popup-wrap" id="authorize"></div>
+<div style="color: #FF0000"><input type="hidden" name="TYPE" value="AUTH"></div>
+<div style="color: #FF0000"><div class="login-popup"></div>
+<div style="color: #FF0000"><div class="login-popup-title">Авторизация</div></div>
+<div style="color: #FF0000"><div class="login-popup-title-description">Пожалуйста, авторизуйтесь</div></div>
+<div style="color: #FF0000"><div class="login-popup-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Логин</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="text" class="login-input" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="USER_LOGIN" value="" tabindex="1"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-popup-field" id="authorize_password"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Пароль</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="password" class="login-input" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="USER_PASSWORD" tabindex="2"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="submit" value="" class="login-btn-green" name="Login" tabindex="4" onfocus="BX.addClass(this, 'login-btn-green-hover');" onblur="BX.removeClass(this, 'login-btn-green-hover')"></div>
+<div style="color: #FF0000"><div class="login-loading"></div>
+<div style="color: #FF0000"><img class="login-waiter" alt="" src="/bitrix/panel/main/images/login-waiter.gif"></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="hidden" name="captcha_sid" value="" /></div>
+<div style="color: #FF0000"><div class="login-popup-field login-captcha-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Введите слово на картинке</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><span class="login-captcha-wrap" id="captcha_image"></span><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="captcha_word" class="login-input" tabindex="5" autocomplete="off"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-popup-checbox-block"></div>
+<div style="color: #FF0000"><input type="checkbox" class="adm-designed-checkbox" id="USER_REMEMBER" name="USER_REMEMBER" value="Y" tabindex="3" onfocus="BX.addClass(this.nextSibling, 'login-popup-checkbox-label-active')" onblur="BX.removeClass(this.nextSibling, 'login-popup-checkbox-label-active')"><label for="USER_REMEMBER" class="adm-designed-checkbox-label"></label></div>
+<div style="color: #FF0000"><label for="USER_REMEMBER" class="login-popup-checkbox-label">Запомнить меня на этом компьютере</label></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><a class="login-popup-link login-popup-forget-pas" href="javascript:void(0)" onclick="BX.adminLogin.toggleAuthForm('forgot_password')">Забыли свой пароль?</a></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><script></div>
+<div style="color: #FF0000">BX.adminLogin.registerForm(new BX.authFormAuthorize('authorize', {url: '/bitrix/admin/php_command_line.php?login=yes&lang=ru'}));</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="hidden" name="sessid" id="sessid" value="a4f11c6211f80c4325521799367c1784" />				</form></div>
+<div style="color: #FF0000"></td></div>
+<div style="color: #FF0000"></tr></div>
+<div style="color: #FF0000"></table></div>
+<div style="color: #FF0000"><iframe name="auth_frame" src="" style="display:none;"></iframe></div>
+<div style="color: #FF0000"><div id="login_variants" style="display: none;"></div>
+<div style="color: #FF0000"><div id="forgot_password" class="login-popup-wrap-with-text"></div>
+<div style="color: #FF0000"><div class="login-popup-wrap login-popup-request-wrap"></div>
+<div style="color: #FF0000"><input type="hidden" name="TYPE" value="SEND_PWD"></div>
+<div style="color: #FF0000"><div class="login-popup"></div>
+<div style="color: #FF0000"><div class="login-popup-title">Запрос пароля</div></div>
+<div style="color: #FF0000"><div class="login-popup-title-description">Выслать контрольную строку</div></div>
+<div style="color: #FF0000"><div class="login-popup-request-fields-wrap" id="forgot_password_fields"></div>
+<div style="color: #FF0000"><div class="login-popup-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Логин</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" class="login-input"  name="USER_LOGIN" value=""></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-popup-either">или</div></div>
+<div style="color: #FF0000"><div class="login-popup-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">E-mail</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" class="login-input" name="USER_EMAIL"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="hidden" name="captcha_sid" value="" /></div>
+<div style="color: #FF0000"><div class="login-popup-field login-captcha-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Введите слово на картинке</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><span class="login-captcha-wrap" id="captcha_image"></span><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="captcha_word" class="login-input" tabindex="5" autocomplete="off"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-btn-wrap" id="forgot_password_message_button"><a class="login-popup-link login-popup-return-auth" href="javascript:void(0)" onclick="BX.adminLogin.toggleAuthForm('authorize')">Авторизоваться</a><input type="submit" value="Выслать" class="login-btn" name="send_account_info"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-popup-request-text" id="forgot_password_note"></div>
+<div style="color: #FF0000">Если вы забыли пароль, введите ваш логин или E-Mail, указанный при регистрации. Контрольная строка для смены пароля будет выслана вам по электронной почте.<br></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><script></div>
+<div style="color: #FF0000">var obForgMsg = new BX.authFormForgotPasswordMessage('forgot_password_message', {url:''}),</div>
+<div style="color: #FF0000">obForg = new BX.authFormForgotPassword('forgot_password', {</div>
+<div style="color: #FF0000">url: '/bitrix/admin/php_command_line.php?forgot_password=yes&lang=ru',</div>
+<div style="color: #FF0000">needCaptcha: false,</div>
+<div style="color: #FF0000">message: obForgMsg</div>
+<div style="color: #FF0000">});</div>
+<div style="color: #FF0000">BX.adminLogin.registerForm(obForg);</div>
+<div style="color: #FF0000">BX.adminLogin.registerForm(obForgMsg);</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"><div id="change_password" class="login-popup-wrap login-popup-replace-wrap"></div>
+<div style="color: #FF0000"><input type="hidden" name="TYPE" value="CHANGE_PWD"></div>
+<div style="color: #FF0000"><div class="login-popup"></div>
+<div style="color: #FF0000"><div class="login-popup-title">Смена пароля</div></div>
+<div style="color: #FF0000"><div class="login-popup-title-description">Введите контрольную строку и новый пароль</div></div>
+<div style="color: #FF0000"><div class="login-popup-replace-fields-wrap" id="change_password_fields"></div>
+<div style="color: #FF0000"><div class="login-popup-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Логин</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="email" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" class="login-input" name="USER_LOGIN" value=""></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-popup-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Контрольная строка</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" class="login-input" name="USER_CHECKWORD" value=""></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div class="login-popup-field login-replace-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title"><span class="login-replace-title">Новый пароль</span><span class="login-replace-title">Подтверждение</span></div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="password" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" class="login-input" name="USER_PASSWORD"><input type="password" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" class="login-input" name="USER_CONFIRM_PASSWORD"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="hidden" name="captcha_sid" value="" /></div>
+<div style="color: #FF0000"><div class="login-popup-field login-captcha-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Введите слово на картинке</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><span class="login-captcha-wrap" id="captcha_image"></span><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="captcha_word" class="login-input" tabindex="5" autocomplete="off"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><a href="javascript:void(0)" onclick="toggleAuthForm('forgot_password')" style="display: none;" id="change_password_forgot_link" class="login-popup-forget-pas">Перейти на форму для восстановления пароля</a></div>
+<div style="color: #FF0000"><div class="login-btn-wrap" id="change_password_button"><a class="login-popup-link login-popup-return-auth" href="javascript:void(0)" onclick="BX.adminLogin.toggleAuthForm('authorize')">Авторизоваться</a><input type="submit" name="change_pwd" value="Изменить пароль" class="login-btn"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><script></div>
+<div style="color: #FF0000">BX.message({</div>
+<div style="color: #FF0000">'AUTH_NEW_PASSWORD_CONFIRM_WRONG':'Введенные пароли не совпадают'</div>
+<div style="color: #FF0000">});</div>
+<div style="color: #FF0000">var obChangeMsg = new BX.authFormChangePasswordMessage('change_password_message', {url:''}),</div>
+<div style="color: #FF0000">obChange = new BX.authFormChangePassword('change_password', {</div>
+<div style="color: #FF0000">url: '/bitrix/admin/php_command_line.php?change_password=yes&lang=ru',</div>
+<div style="color: #FF0000">needCaptcha: false,</div>
+<div style="color: #FF0000">message: obChangeMsg</div>
+<div style="color: #FF0000">});</div>
+<div style="color: #FF0000">BX.adminLogin.registerForm(obChange);</div>
+<div style="color: #FF0000">BX.adminLogin.registerForm(obChangeMsg);</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"><div class="login-main-popup-wrap login-popup-wrap" id="otp"></div>
+<div style="color: #FF0000"><input type="hidden" name="TYPE" value="OTP"></div>
+<div style="color: #FF0000"><div class="login-popup"></div>
+<div style="color: #FF0000"><div class="login-popup-title">Авторизация</div></div>
+<div style="color: #FF0000"><div class="login-popup-title-description">Пожалуйста, авторизуйтесь</div></div>
+<div style="color: #FF0000"><div class="login-popup-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Одноразовый пароль</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><input type="text" class="login-input" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="USER_OTP" value="" tabindex="1" autocomplete="off"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="submit" value="" class="login-btn-green" name="Login" tabindex="5" onfocus="BX.addClass(this, 'login-btn-green-hover');" onblur="BX.removeClass(this, 'login-btn-green-hover')"></div>
+<div style="color: #FF0000"><div class="login-loading"></div>
+<div style="color: #FF0000"><img class="login-waiter" alt="" src="/bitrix/panel/main/images/login-waiter.gif"></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><input type="hidden" name="captcha_sid" value="" /></div>
+<div style="color: #FF0000"><div class="login-popup-field login-captcha-field"></div>
+<div style="color: #FF0000"><div class="login-popup-field-title">Введите слово на картинке</div></div>
+<div style="color: #FF0000"><div class="login-input-wrap"></div>
+<div style="color: #FF0000"><span class="login-captcha-wrap" id="captcha_image"></span><input type="text" onfocus="BX.addClass(this.parentNode, 'login-input-active')" onblur="BX.removeClass(this.parentNode, 'login-input-active')" name="captcha_word" class="login-input" tabindex="4" autocomplete="off"></div>
+<div style="color: #FF0000"><div class="login-inp-border"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><a class="login-popup-link login-popup-forget-pas" href="javascript:void(0)" onclick="BX.adminLogin.toggleAuthForm('authorize')">Авторизоваться</a></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><script></div>
+<div style="color: #FF0000">BX.adminLogin.registerForm(new BX.authFormOtp('otp', {url: '/bitrix/admin/php_command_line.php?lang=ru'}));</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"><div id="forgot_password_message" class="login-popup-wrap login-popup-ifo-wrap"></div>
+<div style="color: #FF0000"><div class="login-popup"></div>
+<div style="color: #FF0000"><div class="login-popup-title">Запрос пароля</div></div>
+<div style="color: #FF0000"><div class="login-popup-title-description">Контрольная строка выслана</div></div>
+<div style="color: #FF0000"><div class="login-popup-message-wrap"></div>
+<div style="color: #FF0000"><div class="adm-info-message-wrap adm-info-message-green"></div>
+<div style="color: #FF0000"><div class="adm-info-message" id="forgot_password_message_inner"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><a class="login-popup-link" href="javascript:void(0)" onclick="BX.adminLogin.toggleAuthForm('change_password')">Перейти на форму для смены пароля</a></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div id="change_password_message" class="login-popup-wrap login-popup-ifo-wrap"></div>
+<div style="color: #FF0000"><div class="login-popup"></div>
+<div style="color: #FF0000"><div class="login-popup-title">Смена пароля</div></div>
+<div style="color: #FF0000"><div class="login-popup-message-wrap"></div>
+<div style="color: #FF0000"><div class="adm-info-message-wrap adm-info-message-green"></div>
+<div style="color: #FF0000"><div class="adm-info-message" id="change_password_message_inner"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><a class="login-popup-link" href="javascript:void(0)" onclick="BX.adminLogin.toggleAuthForm('authorize')">Перейти на форму авторизации</a></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"></div></div>
+<div style="color: #FF0000"><div style="display: none;" id="window_wrapper"></div></div>
+<div style="color: #FF0000"><script></div>
+<div style="color: #FF0000">BX.ready(BX.defer(function(){</div>
+<div style="color: #FF0000">BX.addClass(document.body, 'login-animate');</div>
+<div style="color: #FF0000">BX.addClass(document.body, 'login-animate-popup');</div>
+<div style="color: #FF0000">//preload admin scripts&styles</div>
+<div style="color: #FF0000">setTimeout(function() {</div>
+<div style="color: #FF0000">BX.load(['/bitrix/panel/main/admin.css?1745009624129769','/bitrix/panel/main/admin-public.css?174500962467352','/bitrix/panel/main/adminstyles_fixed.css?174500962421451','/bitrix/themes/.default/modules.css?174501019727507']);</div>
+<div style="color: #FF0000">BX.load(['/bitrix/js/main/utils.js?174500956229279','/bitrix/js/main/admin_tools.js?174500947767947','/bitrix/js/main/popup_menu.js?174500956112913','/bitrix/js/main/admin_search.js?17450094767230','/bitrix/js/main/dd.js?174500952214809','/bitrix/js/main/date/main.date.js?174500952162683','/bitrix/js/main/core/core_date.js?174500951236080','/bitrix/js/main/core/core_admin_interface.js?1745009511154840','/bitrix/js/main/core/core_autosave.js?17450095119741','/bitrix/js/main/core/core_fx.js?174500951316888']);</div>
+<div style="color: #FF0000">}, 2000);</div>
+<div style="color: #FF0000">}));</div>
+<div style="color: #FF0000">new BX.COpener({DIV: 'login_lang_button', ACTIVE_CLASS: 'login-language-btn-active', MENU: [{"TEXT":"(ru) Russian","LINK":"\/bitrix\/admin\/php_command_line.php?lang=ru"},{"TEXT":"(en) English","LINK":"\/bitrix\/admin\/php_command_line.php?lang=en"}]});</div>
+<div style="color: #FF0000"></script></div>
+<div style="color: #FF0000"></body></div>
+<div style="color: #FF0000"></html></div>
+<div style="color: #FF0000"></div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.MakeRequestToPHPconsole(String phpCode, HttpClient client, String bitrix_sessid) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 53</div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.Execute(String phpCode) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 36</div>
+<div style="color: #FF0000">at ATframework3demo.TestEntities.RoomfyPost.CreatePost(PortalInfo testPotal) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestEntities\RoomfyPost.cs:line 46</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Roomfy_SendMessage.SendMessge(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Roomfy_SendMessage.cs:line 41</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Roomfy_SendMessage.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Roomfy_SendMessage.cs:line 17</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 62</div>
+<div style="color: #000000">[29.04.2025 09:19:36.146][INFO] ---------------Кейс 'Отправка личного сообщения пользователю' завершён---------------</div>

@@ -1,0 +1,241 @@
+<!DOCTYPE html><div style="color: #000000">[14.03.2025 12:15:07.791][INFO] ---------------Запуск кейса 'Запуск робота Запланировать дело в CRM с проверкой его выполнения'---------------</div>
+<div style="color: #000000">[14.03.2025 12:15:07.806][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[14.03.2025 12:15:31.657][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[14.03.2025 12:15:31.758][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[14.03.2025 12:15:32.963][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[14.03.2025 12:15:33.014][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[14.03.2025 12:15:33.146][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[14.03.2025 12:15:34.312][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[14.03.2025 12:15:34.362][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[14.03.2025 12:16:14.704][INFO] Добавление пользователя ИванVIIIXXXXVXIIXVIXIV ЧёXIVIIIXXXXVXIIXVIXIV на портал скриптом</div>
+<div style="color: #000000">[14.03.2025 12:16:14.706][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["ADD_NAME"] = 'ИванVIIIXXXXVXIIXVIXIV';</div>
+<div style="color: #000000">$arFields["ADD_LAST_NAME"] = 'ЧёXIVIIIXXXXVXIIXVIXIV';</div>
+<div style="color: #000000">$arFields["ADD_EMAIL"] = 'bx1ivanchyox-14032025121614@test.com';</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = '1';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($arFields["DEPARTMENT_ID"] == 0)</div>
+<div style="color: #000000">unset($arFields["DEPARTMENT_ID"]);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = [$arFields["DEPARTMENT_ID"]];</div>
+<div style="color: #000000">$SITE_ID = "s1";</div>
+<div style="color: #000000">$strError = "";</div>
+<div style="color: #000000">$userID = 0;</div>
+<div style="color: #000000">$userLogin = $arFields["ADD_EMAIL"];</div>
+<div style="color: #000000">$userID = CIntranetInviteDialog::AddNewUser($SITE_ID, $arFields, $strError);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($userID > 0) {</div>
+<div style="color: #000000">echo "Пользователь ";</div>
+<div style="color: #000000">echo $userLogin;</div>
+<div style="color: #000000">echo " успешно добавлен на портал с ID ";</div>
+<div style="color: #000000">if(is_array($userID))</div>
+<div style="color: #000000">echo $userID[0];</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $userID;</div>
+<div style="color: #000000">echo "<br/>";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($strError != "")</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if(is_array($strError))</div>
+<div style="color: #000000">print_r($strError);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $strError;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[14.03.2025 12:17:21.795][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь bx1ivanchyox-14032025121614@test.com успешно добавлен на портал с ID 28<br/></div>
+<div style="color: #000000">[14.03.2025 12:17:21.892][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-14032025121614@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[14.03.2025 12:17:38.312][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"28"}]</div>
+<div style="color: #000000">[14.03.2025 12:17:40.340][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT GROUP_ID from b_user_group WHERE USER_ID = '28'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[14.03.2025 12:17:48.263][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"GROUP_ID":"3"},{"GROUP_ID":"4"}]</div>
+<div style="color: #000000">[14.03.2025 12:17:48.280][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["PASSWORD"] = '@q+eE+-6,aA1';</div>
+<div style="color: #000000">$groupIDS = '3,4';</div>
+<div style="color: #000000">$userID = '28';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser = new CUser;</div>
+<div style="color: #000000">$arGroupsIDs = explode(",", $groupIDS);</div>
+<div style="color: #000000">$rsUser = CUser::GetByID($userID);</div>
+<div style="color: #000000">$arUser = $rsUser->Fetch();</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">foreach ($arFields as $key => $value)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if($key != "PASSWORD")</div>
+<div style="color: #000000">$arUser[$key] = $value;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$fields = array(</div>
+<div style="color: #000000">"NAME" => $arUser["NAME"],</div>
+<div style="color: #000000">"LAST_NAME" => $arUser["LAST_NAME"],</div>
+<div style="color: #000000">"EMAIL" => $arUser["EMAIL"],</div>
+<div style="color: #000000">"LOGIN" => $arUser["LOGIN"],</div>
+<div style="color: #000000">"LID" => $arUser["LID"],</div>
+<div style="color: #000000">"ACTIVE" => $arUser["ACTIVE"],</div>
+<div style="color: #000000">"GROUP_ID" => $arGroupsIDs,</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if($arFields["PASSWORD"] != null)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">$fields["PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">$fields["CONFIRM_PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser->Update($userID, $fields);</div>
+<div style="color: #000000">$res = $objUser->Login($arUser["EMAIL"], $newPassword);</div>
+<div style="color: #000000">if (!is_array($res)) {</div>
+<div style="color: #000000">echo "Успешная авторизация";</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Авторизация не удалась:\n";</div>
+<div style="color: #000000">print_r($res);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[14.03.2025 12:18:04.355][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Успешная авторизация</div>
+<div style="color: #000000">[14.03.2025 12:18:04.365][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("UPDATE b_user SET CONFIRM_CODE = '' WHERE LOGIN = 'bx1ivanchyox-14032025121614@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[14.03.2025 12:18:10.516][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[]</div>
+<div style="color: #000000">[14.03.2025 12:18:10.519][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT ID from b_group WHERE STRING_ID = 'EMPLOYEES_s1'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[14.03.2025 12:18:14.465][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"12"}]</div>
+<div style="color: #000000">[14.03.2025 12:18:14.622][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-14032025121614@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[14.03.2025 12:18:20.207][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"28"}]</div>
+<div style="color: #000000">[14.03.2025 12:18:20.210][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CUser::AppendUserGroup(28, 12)</div>
+<div style="color: #000000">[14.03.2025 12:18:25.931][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[14.03.2025 12:18:25.938][INFO] Пользователь ИванVIIIXXXXVXIIXVIXIV ЧёXIVIIIXXXXVXIIXVIXIV успешно добавлен на портал</div>
+<div style="color: #000000">[14.03.2025 12:18:26.428][INFO] Ожидание отображения элемента 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[14.03.2025 12:18:27.172][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[14.03.2025 12:18:27.419][INFO] Ожидание отображения элемента 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[14.03.2025 12:18:28.069][INFO] Ожидание отображения элемента 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[14.03.2025 12:18:28.506][INFO] Click: 'Пункт левого меню CRM' локаторы: //li[@id='bx_left_menu_menu_crm_favorite']</div>
+<div style="color: #000000">[14.03.2025 12:19:21.868][INFO] Ожидание отображения элемента 'Раздел Канбан активный' локаторы: //div[@class = 'ui-nav-panel__item --active' and contains(text(), 'Канбан')]</div>
+<div style="color: #000000">[14.03.2025 12:19:22.186][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[14.03.2025 12:19:22.441][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[14.03.2025 12:19:22.569][INFO] Click: 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[14.03.2025 12:19:24.827][INFO] SwitchToFrame: 'Фрейм страницы создания робота' локаторы: //iframe[contains(@src, '/crm/deal/automation/')]</div>
+<div style="color: #000000">[14.03.2025 12:19:34.987][INFO] Ожидание отображения элемента 'закрытие всплывающего окна' локаторы: //span[@class = 'popup-window-close-icon']</div>
+<div style="color: #000000">[14.03.2025 12:19:35.153][INFO] Click: 'закрытие всплывающего окна' локаторы: //span[@class = 'popup-window-close-icon']</div>
+<div style="color: #000000">[14.03.2025 12:19:37.748][INFO] Ожидание отображения элемента 'Кнопка создания робота' локаторы: //button[@data-role='automation-btn-create' and contains(text(), '					Создать				') ]</div>
+<div style="color: #000000">[14.03.2025 12:19:38.268][INFO] Ожидание отображения элемента 'Кнопка создания робота' локаторы: //button[@data-role='automation-btn-create' and contains(text(), '					Создать				') ]</div>
+<div style="color: #000000">[14.03.2025 12:19:38.440][INFO] Click: 'Кнопка создания робота' локаторы: //button[@data-role='automation-btn-create' and contains(text(), '					Создать				') ]</div>
+<div style="color: #000000">[14.03.2025 12:19:40.868][INFO] Ожидание отображения элемента 'Кнопка выбора стадии сделки' локаторы: //span[@class = 'bizproc-creating-robot__stage-block_title-text']</div>
+<div style="color: #000000">[14.03.2025 12:19:41.685][INFO] Ожидание отображения элемента 'Кнопка выбора стадии сделки' локаторы: //span[@class = 'bizproc-creating-robot__stage-block_title-text']</div>
+<div style="color: #000000">[14.03.2025 12:19:42.003][INFO] Click: 'Кнопка выбора стадии сделки' локаторы: //span[@class = 'bizproc-creating-robot__stage-block_title-text']</div>
+<div style="color: #000000">[14.03.2025 12:19:44.652][INFO] Ожидание отображения элемента 'Кнопка стадии сделки - Подготовка документов' локаторы: //span[@class = 'bizproc-creating-robot__stage-block_title-text-menu' and contains(text(), 'Подготовка документов')]</div>
+<div style="color: #000000">[14.03.2025 12:19:45.047][INFO] Ожидание отображения элемента 'Кнопка стадии сделки - Подготовка документов' локаторы: //span[@class = 'bizproc-creating-robot__stage-block_title-text-menu' and contains(text(), 'Подготовка документов')]</div>
+<div style="color: #000000">[14.03.2025 12:19:45.249][INFO] Click: 'Кнопка стадии сделки - Подготовка документов' локаторы: //span[@class = 'bizproc-creating-robot__stage-block_title-text-menu' and contains(text(), 'Подготовка документов')]</div>
+<div style="color: #000000">[14.03.2025 12:19:47.379][INFO] Ожидание отображения элемента 'Кнопка выбора группы сделки - Повторные продажи' локаторы: //span[@class = 'ui-entity-catalog__menu_item-text' and contains(text(), 'Повторные продажи')]</div>
+<div style="color: #000000">[14.03.2025 12:19:47.783][INFO] Ожидание отображения элемента 'Кнопка выбора группы сделки - Повторные продажи' локаторы: //span[@class = 'ui-entity-catalog__menu_item-text' and contains(text(), 'Повторные продажи')]</div>
+<div style="color: #000000">[14.03.2025 12:19:47.950][INFO] Click: 'Кнопка выбора группы сделки - Повторные продажи' локаторы: //span[@class = 'ui-entity-catalog__menu_item-text' and contains(text(), 'Повторные продажи')]</div>
+<div style="color: #000000">[14.03.2025 12:19:50.783][INFO] Ожидание отображения элемента 'Кнопка добавления робота - Запланировать дело' локаторы: //div[@class='ui-entity-catalog__option' and .//div[@class='ui-entity-catalog__option-info_description' and contains(text(), 'Создаёт дело')]]//div[@class='ui-entity-catalog__btn' and text()='Добавить']</div>
+<div style="color: #000000">[14.03.2025 12:19:51.065][INFO] Ожидание отображения элемента 'Кнопка добавления робота - Запланировать дело' локаторы: //div[@class='ui-entity-catalog__option' and .//div[@class='ui-entity-catalog__option-info_description' and contains(text(), 'Создаёт дело')]]//div[@class='ui-entity-catalog__btn' and text()='Добавить']</div>
+<div style="color: #000000">[14.03.2025 12:19:51.266][INFO] Click: 'Кнопка добавления робота - Запланировать дело' локаторы: //div[@class='ui-entity-catalog__option' and .//div[@class='ui-entity-catalog__option-info_description' and contains(text(), 'Создаёт дело')]]//div[@class='ui-entity-catalog__btn' and text()='Добавить']</div>
+<div style="color: #000000">[14.03.2025 12:19:54.013][INFO] Ожидание отображения элемента 'параметр По очереди' локаторы: //div[@class='bizproc-automation-popup-settings-block']/span[@class='bizproc-automation-popup-settings-title' and text()='По очереди']/following-sibling::span[@class='bizproc-automation-popup-settings-link-wrapper']</div>
+<div style="color: #000000">[14.03.2025 12:19:56.950][INFO] Ожидание отображения элемента 'параметр По очереди' локаторы: //div[@class='bizproc-automation-popup-settings-block']/span[@class='bizproc-automation-popup-settings-title' and text()='По очереди']/following-sibling::span[@class='bizproc-automation-popup-settings-link-wrapper']</div>
+<div style="color: #000000">[14.03.2025 12:19:57.149][INFO] Click: 'параметр По очереди' локаторы: //div[@class='bizproc-automation-popup-settings-block']/span[@class='bizproc-automation-popup-settings-title' and text()='По очереди']/following-sibling::span[@class='bizproc-automation-popup-settings-link-wrapper']</div>
+<div style="color: #000000">[14.03.2025 12:20:00.067][INFO] Ожидание отображения элемента 'параметр По очереди-Независимо от других роботов' локаторы: //span[@class = 'bizproc-automation-popup-settings__input-title' and contains(text(), 'Независимо от других роботов')]</div>
+<div style="color: #000000">[14.03.2025 12:20:00.602][INFO] Ожидание отображения элемента 'параметр По очереди-Независимо от других роботов' локаторы: //span[@class = 'bizproc-automation-popup-settings__input-title' and contains(text(), 'Независимо от других роботов')]</div>
+<div style="color: #000000">[14.03.2025 12:20:00.933][INFO] Click: 'параметр По очереди-Независимо от других роботов' локаторы: //span[@class = 'bizproc-automation-popup-settings__input-title' and contains(text(), 'Независимо от других роботов')]</div>
+<div style="color: #000000">[14.03.2025 12:20:04.017][INFO] Ожидание отображения элемента 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:04.851][INFO] Ожидание отображения элемента 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:05.495][INFO] Click: 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:09.316][INFO] Ожидание отображения элемента 'параметр Когда' локаторы: //span[@class='bizproc-automation-popup-settings-title bizproc-automation-popup-settings-title-left' and text()='Когда']/following-sibling::span[@class='bizproc-automation-popup-settings-link bizproc-automation-delay-interval-basis']</div>
+<div style="color: #000000">[14.03.2025 12:20:09.612][INFO] Ожидание отображения элемента 'параметр Когда' локаторы: //span[@class='bizproc-automation-popup-settings-title bizproc-automation-popup-settings-title-left' and text()='Когда']/following-sibling::span[@class='bizproc-automation-popup-settings-link bizproc-automation-delay-interval-basis']</div>
+<div style="color: #000000">[14.03.2025 12:20:09.911][INFO] Click: 'параметр Когда' локаторы: //span[@class='bizproc-automation-popup-settings-title bizproc-automation-popup-settings-title-left' and text()='Когда']/following-sibling::span[@class='bizproc-automation-popup-settings-link bizproc-automation-delay-interval-basis']</div>
+<div style="color: #000000">[14.03.2025 12:20:12.634][INFO] Ожидание отображения элемента 'параметр Когда - Текущее время' локаторы: //span[@class='bizproc-automation-popup-settings__text --first' and contains(text(), 'Текущее время')]</div>
+<div style="color: #000000">[14.03.2025 12:20:13.014][INFO] Ожидание отображения элемента 'параметр Когда - Текущее время' локаторы: //span[@class='bizproc-automation-popup-settings__text --first' and contains(text(), 'Текущее время')]</div>
+<div style="color: #000000">[14.03.2025 12:20:13.293][INFO] Click: 'параметр Когда - Текущее время' локаторы: //span[@class='bizproc-automation-popup-settings__text --first' and contains(text(), 'Текущее время')]</div>
+<div style="color: #000000">[14.03.2025 12:20:15.899][INFO] Ожидание отображения элемента 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:16.215][INFO] Ожидание отображения элемента 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:16.594][INFO] Click: 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:19.216][INFO] Ожидание отображения элемента 'Кнопка добавления условия' локаторы: //a[@class='bizproc-automation-popup-settings-link' and contains(text(), 'Добавить')]</div>
+<div style="color: #000000">[14.03.2025 12:20:19.672][INFO] Ожидание отображения элемента 'Кнопка добавления условия' локаторы: //a[@class='bizproc-automation-popup-settings-link' and contains(text(), 'Добавить')]</div>
+<div style="color: #000000">[14.03.2025 12:20:20.044][INFO] Click: 'Кнопка добавления условия' локаторы: //a[@class='bizproc-automation-popup-settings-link' and contains(text(), 'Добавить')]</div>
+<div style="color: #000000">[14.03.2025 12:20:22.883][INFO] Ожидание отображения элемента 'Кнопка Не заполнено' локаторы: //span[@class='bizproc-automation-popup-settings__condition-text' and contains(text(), 'не заполнено')]</div>
+<div style="color: #000000">[14.03.2025 12:20:23.150][INFO] Ожидание отображения элемента 'Кнопка Не заполнено' локаторы: //span[@class='bizproc-automation-popup-settings__condition-text' and contains(text(), 'не заполнено')]</div>
+<div style="color: #000000">[14.03.2025 12:20:23.352][INFO] Click: 'Кнопка Не заполнено' локаторы: //span[@class='bizproc-automation-popup-settings__condition-text' and contains(text(), 'не заполнено')]</div>
+<div style="color: #000000">[14.03.2025 12:20:25.901][INFO] Ожидание отображения элемента 'Кнопка выбора условия' локаторы: //div[@class='bizproc-automation-popup-settings-dropdown']</div>
+<div style="color: #000000">[14.03.2025 12:20:26.231][INFO] Ожидание отображения элемента 'Кнопка выбора условия' локаторы: //div[@class='bizproc-automation-popup-settings-dropdown']</div>
+<div style="color: #000000">[14.03.2025 12:20:26.550][INFO] Click: 'Кнопка выбора условия' локаторы: //div[@class='bizproc-automation-popup-settings-dropdown']</div>
+<div style="color: #000000">[14.03.2025 12:20:29.716][INFO] Ожидание отображения элемента 'Поле для ввода условия' локаторы: //div[@class='ui-tag-selector-items']//input[@type='text' and @class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:30.030][INFO] Ожидание отображения элемента 'Поле для ввода условия' локаторы: //div[@class='ui-tag-selector-items']//input[@type='text' and @class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:30.212][INFO] Ввод текста 'Название' в элемент: 'Поле для ввода условия' локаторы: //div[@class='ui-tag-selector-items']//input[@type='text' and @class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:31.819][INFO] Ожидание отображения элемента 'Поле для ввода условия' локаторы: //div[@class='ui-tag-selector-items']//input[@type='text' and @class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:32.119][INFO] Ввод текста '' в элемент: 'Поле для ввода условия' локаторы: //div[@class='ui-tag-selector-items']//input[@type='text' and @class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:33.816][INFO] Ожидание отображения элемента 'Кнопка выражения условия' локаторы: //select[@class='bizproc-automation-popup-settings-dropdown']</div>
+<div style="color: #000000">[14.03.2025 12:20:34.234][INFO] Ожидание отображения элемента 'Кнопка выражения условия' локаторы: //select[@class='bizproc-automation-popup-settings-dropdown']</div>
+<div style="color: #000000">[14.03.2025 12:20:34.532][INFO] Click: 'Кнопка выражения условия' локаторы: //select[@class='bizproc-automation-popup-settings-dropdown']</div>
+<div style="color: #000000">[14.03.2025 12:20:37.217][INFO] Ожидание отображения элемента 'выражения условия - =' локаторы: //select[@class='bizproc-automation-popup-settings-dropdown']/option[@value='=']</div>
+<div style="color: #000000">[14.03.2025 12:20:37.660][INFO] Ожидание отображения элемента 'выражения условия - =' локаторы: //select[@class='bizproc-automation-popup-settings-dropdown']/option[@value='=']</div>
+<div style="color: #000000">[14.03.2025 12:20:37.900][INFO] Click: 'выражения условия - =' локаторы: //select[@class='bizproc-automation-popup-settings-dropdown']/option[@value='=']</div>
+<div style="color: #000000">[14.03.2025 12:20:39.400][INFO] Ожидание отображения элемента 'Поле для ввода названия сделки' локаторы: //input[@class='bizproc-type-control bizproc-type-control-string']</div>
+<div style="color: #000000">[14.03.2025 12:20:39.630][INFO] Ожидание отображения элемента 'Поле для ввода названия сделки' локаторы: //input[@class='bizproc-type-control bizproc-type-control-string']</div>
+<div style="color: #000000">[14.03.2025 12:20:39.762][INFO] Click: 'Поле для ввода названия сделки' локаторы: //input[@class='bizproc-type-control bizproc-type-control-string']</div>
+<div style="color: #000000">[14.03.2025 12:20:42.265][INFO] Ожидание отображения элемента 'Поле для ввода названия сделки' локаторы: //input[@class='bizproc-type-control bizproc-type-control-string']</div>
+<div style="color: #000000">[14.03.2025 12:20:42.449][INFO] Ввод текста 'Сделка 14032025121614' в элемент: 'Поле для ввода названия сделки' локаторы: //input[@class='bizproc-type-control bizproc-type-control-string']</div>
+<div style="color: #000000">[14.03.2025 12:20:44.300][INFO] Ожидание отображения элемента 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:44.515][INFO] Click: 'Кнопка Выбрать' локаторы: //span[@class='ui-btn-text' and contains(text(), 'ВЫБРАТЬ')]</div>
+<div style="color: #000000">[14.03.2025 12:20:47.374][INFO] Ожидание отображения элемента 'Поле для ввода описани запланированного дела' локаторы: //textarea[@id='id_description']</div>
+<div style="color: #000000">[14.03.2025 12:20:47.698][INFO] Ожидание отображения элемента 'Поле для ввода описани запланированного дела' локаторы: //textarea[@id='id_description']</div>
+<div style="color: #000000">[14.03.2025 12:20:47.973][INFO] Click: 'Поле для ввода описани запланированного дела' локаторы: //textarea[@id='id_description']</div>
+<div style="color: #000000">[14.03.2025 12:20:50.481][INFO] Ожидание отображения элемента 'Поле для ввода описани запланированного дела' локаторы: //textarea[@id='id_description']</div>
+<div style="color: #000000">[14.03.2025 12:20:50.563][INFO] Ввод текста 'Описание14032025121614' в элемент: 'Поле для ввода описани запланированного дела' локаторы: //textarea[@id='id_description']</div>
+<div style="color: #000000">[14.03.2025 12:20:52.296][INFO] Ожидание отображения элемента 'кнопка изменения ответственного' локаторы: //span[@class='ui-tag-selector-add-button-caption']</div>
+<div style="color: #000000">[14.03.2025 12:20:52.499][INFO] Ожидание отображения элемента 'кнопка изменения ответственного' локаторы: //span[@class='ui-tag-selector-add-button-caption']</div>
+<div style="color: #000000">[14.03.2025 12:20:52.646][INFO] Click: 'кнопка изменения ответственного' локаторы: //span[@class='ui-tag-selector-add-button-caption']</div>
+<div style="color: #000000">[14.03.2025 12:20:55.322][INFO] Ожидание отображения элемента 'поле для ввода ответственного' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:55.379][INFO] Ожидание отображения элемента 'поле для ввода ответственного' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:55.548][INFO] Ввод текста 'ИванVIIIXXXXVXIIXVIXIV ЧёXIVIIIXXXXVXIIXVIXIV' в элемент: 'поле для ввода ответственного' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:58.631][INFO] Ожидание отображения элемента 'поле для ввода ответственного' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:20:58.965][INFO] Ввод текста '' в элемент: 'поле для ввода ответственного' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[14.03.2025 12:21:00.579][INFO] Ожидание отображения элемента 'кнопка сохранения параметров робота' локаторы: //span[@class = 'ui-btn-text' and contains(text(), 'Сохранить')]</div>
+<div style="color: #000000">[14.03.2025 12:21:00.747][INFO] Ожидание отображения элемента 'кнопка сохранения параметров робота' локаторы: //span[@class = 'ui-btn-text' and contains(text(), 'Сохранить')]</div>
+<div style="color: #000000">[14.03.2025 12:21:00.946][INFO] Click: 'кнопка сохранения параметров робота' локаторы: //span[@class = 'ui-btn-text' and contains(text(), 'Сохранить')]</div>
+<div style="color: #000000">[14.03.2025 12:21:03.109][INFO] Ожидание отображения элемента 'закрытие всплывающего окна' локаторы: //span[@class = 'popup-window-close-icon']</div>
+<div style="color: #000000">[14.03.2025 12:21:05.415][INFO] Ожидание отображения элемента 'закрытие всплывающего окна' локаторы: //span[@class = 'popup-window-close-icon']</div>
+<div style="color: #000000">[14.03.2025 12:21:05.465][INFO] Click: 'закрытие всплывающего окна' локаторы: //span[@class = 'popup-window-close-icon']</div>
+<div style="color: #000000">[14.03.2025 12:21:07.126][INFO] Ожидание отображения элемента 'кнопка сохранения робота' локаторы: //button[@id= 'ui-button-panel-save']</div>
+<div style="color: #000000">[14.03.2025 12:21:07.279][INFO] Ожидание отображения элемента 'кнопка сохранения робота' локаторы: //button[@id= 'ui-button-panel-save']</div>
+<div style="color: #000000">[14.03.2025 12:21:07.469][INFO] Click: 'кнопка сохранения робота' локаторы: //button[@id= 'ui-button-panel-save']</div>
+<div style="color: #000000">[14.03.2025 12:21:08.788][INFO] Refresh</div>
+<div style="color: #000000">[14.03.2025 12:21:23.078][INFO] SwitchToDefaultContent</div>
+<div style="color: #000000">[14.03.2025 12:21:23.134][INFO] Ожидание отображения элемента 'кнопка закрытия пейджи создания робота' локаторы: //div[@class = 'side-panel-label-icon side-panel-label-icon-close']</div>
+<div style="color: #000000">[14.03.2025 12:21:23.247][INFO] Ожидание отображения элемента 'кнопка закрытия пейджи создания робота' локаторы: //div[@class = 'side-panel-label-icon side-panel-label-icon-close']</div>
+<div style="color: #000000">[14.03.2025 12:21:23.297][INFO] Click: 'кнопка закрытия пейджи создания робота' локаторы: //div[@class = 'side-panel-label-icon side-panel-label-icon-close']</div>
+<div style="color: #000000">[14.03.2025 12:21:25.099][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[14.03.2025 12:21:26.445][INFO] Ожидание отображения элемента 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[14.03.2025 12:21:27.013][INFO] Click: 'Кнопка перехода на окно создания робота' локаторы: //a[@class = 'ui-btn ui-btn-light-border ui-btn-no-caps ui-btn-themes ui-btn-round crm-robot-btn']</div>
+<div style="color: #000000">[14.03.2025 12:21:29.774][INFO] Refresh</div>
+<div style="color: #000000">[14.03.2025 12:21:41.992][INFO] ---------------Кейс 'Запуск робота Запланировать дело в CRM с проверкой его выполнения' завершён---------------</div>

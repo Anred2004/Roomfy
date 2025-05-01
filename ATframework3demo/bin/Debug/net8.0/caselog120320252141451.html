@@ -1,0 +1,73 @@
+<!DOCTYPE html><div style="color: #000000">[12.03.2025 09:41:45.540][INFO] ---------------Запуск кейса 'Создание комментария под постом в ленте от другого юзера'---------------</div>
+<div style="color: #000000">[12.03.2025 09:41:45.550][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[12.03.2025 09:42:36.232][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[12.03.2025 09:42:36.317][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[12.03.2025 09:42:37.616][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[12.03.2025 09:42:37.669][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[12.03.2025 09:42:37.705][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[12.03.2025 09:42:38.875][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[12.03.2025 09:42:38.914][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[12.03.2025 09:43:04.554][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CModule::IncludeModule("blog");</div>
+<div style="color: #000000">CModule::IncludeModule("socialnetwork");</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">//определяем id блога</div>
+<div style="color: #000000">$arBlog = CBlog::GetByOwnerID(1);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields= array(</div>
+<div style="color: #000000">"TITLE" => "Заголовок 12032025214304",</div>
+<div style="color: #000000">"DETAIL_TEXT" => "Описание 12032025214304",</div>
+<div style="color: #000000">"DATE_PUBLISH" => date('d.m.Y H:i:s'),</div>
+<div style="color: #000000">"PUBLISH_STATUS" => "P",</div>
+<div style="color: #000000">"PERMS_POST" => Array(),</div>
+<div style="color: #000000">"PERMS_COMMENT" => Array (),</div>
+<div style="color: #000000">"SOCNET_RIGHTS" => Array</div>
+<div style="color: #000000">(</div>
+<div style="color: #000000">"UA", "G2"</div>
+<div style="color: #000000">),</div>
+<div style="color: #000000">"=DATE_CREATE" => "now()",</div>
+<div style="color: #000000">"AUTHOR_ID" => $USER->GetID(),</div>
+<div style="color: #000000">"BLOG_ID" => $arBlog['ID'],</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$newID= CBlogPost::Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields["ID"] = $newID;</div>
+<div style="color: #000000">$arParamsNotify = Array(</div>
+<div style="color: #000000">"bSoNet" => true,</div>
+<div style="color: #000000">"UserID" => $USER->GetID(),</div>
+<div style="color: #000000">"user_id" => $USER->GetID(),</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CBlogPost::Notify($arFields, array(), $arParamsNotify);</div>
+<div style="color: #FF0000">[12.03.2025 09:44:44.820][ERROR] Кейс не пройден, причина:</div>
+<div style="color: #FF0000">System.AggregateException: One or more errors occurred. (A task was canceled.)</div>
+<div style="color: #FF0000">---> System.Threading.Tasks.TaskCanceledException: A task was canceled.</div>
+<div style="color: #FF0000">at System.Threading.Tasks.Task.GetExceptions(Boolean includeTaskCanceledExceptions)</div>
+<div style="color: #FF0000">at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)</div>
+<div style="color: #FF0000">at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)</div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.GetAuthorisedHttpClient(String& bitrix_sessid) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 84</div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.Execute(String phpCode) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 35</div>
+<div style="color: #FF0000">at ATframework3demo.TestEntities.Bitrix24CreatePost.CreatePost(PortalInfo testPotal) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestEntities\Bitrix24CreatePost.cs:line 34</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateComment.CreateComment(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateComment.cs:line 25</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateComment.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateComment.cs:line 16</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 61</div>
+<div style="color: #FF0000">at ATframework3demo.Pages.TestRunPage.TestRunComponentBase.<>c__DisplayClass40_1.<RunSelectedTests>b__2() in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\Pages\TestRunPage\TestRunComponentBase.cs:line 70</div>
+<div style="color: #FF0000">at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)</div>
+<div style="color: #FF0000">at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)</div>
+<div style="color: #FF0000">at System.Threading.ThreadPoolWorkQueue.Dispatch()</div>
+<div style="color: #FF0000">at System.Threading.PortableThreadPool.WorkerThread.WorkerThreadStart()</div>
+<div style="color: #FF0000">--- End of stack trace from previous location ---</div>
+<div style="color: #FF0000"></div>
+<div style="color: #FF0000">--- End of inner exception stack trace ---</div>
+<div style="color: #FF0000">at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)</div>
+<div style="color: #FF0000">at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)</div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.GetAuthorisedHttpClient(String& bitrix_sessid) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 84</div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.Execute(String phpCode) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 35</div>
+<div style="color: #FF0000">at ATframework3demo.TestEntities.Bitrix24CreatePost.CreatePost(PortalInfo testPotal) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestEntities\Bitrix24CreatePost.cs:line 34</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateComment.CreateComment(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateComment.cs:line 25</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateComment.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateComment.cs:line 16</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 61</div>
+<div style="color: #000000">[12.03.2025 09:44:44.821][INFO] ---------------Кейс 'Создание комментария под постом в ленте от другого юзера' завершён---------------</div>

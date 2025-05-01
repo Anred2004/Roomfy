@@ -1,0 +1,218 @@
+<!DOCTYPE html><div style="color: #000000">[23.02.2025 11:41:32.915][INFO] ---------------Запуск кейса 'Создание проекта + пост в ленту проекта'---------------</div>
+<div style="color: #000000">[23.02.2025 11:41:32.922][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[23.02.2025 11:41:39.865][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 11:41:39.934][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 11:41:41.073][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 11:41:41.137][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 11:41:41.165][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 11:41:42.324][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 11:41:42.369][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 11:42:01.930][INFO] Добавление пользователя ИванIIIIXXXXVXXIIIXLII ЧёXIIIIIXXXXVXXIIIXLII на портал скриптом</div>
+<div style="color: #000000">[23.02.2025 11:42:01.937][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["ADD_NAME"] = 'ИванIIIIXXXXVXXIIIXLII';</div>
+<div style="color: #000000">$arFields["ADD_LAST_NAME"] = 'ЧёXIIIIIXXXXVXXIIIXLII';</div>
+<div style="color: #000000">$arFields["ADD_EMAIL"] = 'bx1ivanchyox-23022025114201@test.com';</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = '1';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($arFields["DEPARTMENT_ID"] == 0)</div>
+<div style="color: #000000">unset($arFields["DEPARTMENT_ID"]);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = [$arFields["DEPARTMENT_ID"]];</div>
+<div style="color: #000000">$SITE_ID = "s1";</div>
+<div style="color: #000000">$strError = "";</div>
+<div style="color: #000000">$userID = 0;</div>
+<div style="color: #000000">$userLogin = $arFields["ADD_EMAIL"];</div>
+<div style="color: #000000">$userID = CIntranetInviteDialog::AddNewUser($SITE_ID, $arFields, $strError);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($userID > 0) {</div>
+<div style="color: #000000">echo "Пользователь ";</div>
+<div style="color: #000000">echo $userLogin;</div>
+<div style="color: #000000">echo " успешно добавлен на портал с ID ";</div>
+<div style="color: #000000">if(is_array($userID))</div>
+<div style="color: #000000">echo $userID[0];</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $userID;</div>
+<div style="color: #000000">echo "<br/>";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($strError != "")</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if(is_array($strError))</div>
+<div style="color: #000000">print_r($strError);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $strError;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[23.02.2025 11:43:01.726][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь bx1ivanchyox-23022025114201@test.com успешно добавлен на портал с ID 9<br/></div>
+<div style="color: #000000">[23.02.2025 11:43:01.763][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-23022025114201@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 11:43:07.637][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"9"}]</div>
+<div style="color: #000000">[23.02.2025 11:43:08.018][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT GROUP_ID from b_user_group WHERE USER_ID = '9'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 11:43:13.808][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"GROUP_ID":"3"},{"GROUP_ID":"4"}]</div>
+<div style="color: #000000">[23.02.2025 11:43:13.814][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["PASSWORD"] = 'AZ@((yx",aA1';</div>
+<div style="color: #000000">$groupIDS = '3,4';</div>
+<div style="color: #000000">$userID = '9';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser = new CUser;</div>
+<div style="color: #000000">$arGroupsIDs = explode(",", $groupIDS);</div>
+<div style="color: #000000">$rsUser = CUser::GetByID($userID);</div>
+<div style="color: #000000">$arUser = $rsUser->Fetch();</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">foreach ($arFields as $key => $value)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if($key != "PASSWORD")</div>
+<div style="color: #000000">$arUser[$key] = $value;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$fields = array(</div>
+<div style="color: #000000">"NAME" => $arUser["NAME"],</div>
+<div style="color: #000000">"LAST_NAME" => $arUser["LAST_NAME"],</div>
+<div style="color: #000000">"EMAIL" => $arUser["EMAIL"],</div>
+<div style="color: #000000">"LOGIN" => $arUser["LOGIN"],</div>
+<div style="color: #000000">"LID" => $arUser["LID"],</div>
+<div style="color: #000000">"ACTIVE" => $arUser["ACTIVE"],</div>
+<div style="color: #000000">"GROUP_ID" => $arGroupsIDs,</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if($arFields["PASSWORD"] != null)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">$fields["PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">$fields["CONFIRM_PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser->Update($userID, $fields);</div>
+<div style="color: #000000">$res = $objUser->Login($arUser["EMAIL"], $newPassword);</div>
+<div style="color: #000000">if (!is_array($res)) {</div>
+<div style="color: #000000">echo "Успешная авторизация";</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Авторизация не удалась:\n";</div>
+<div style="color: #000000">print_r($res);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[23.02.2025 11:43:33.059][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Успешная авторизация</div>
+<div style="color: #000000">[23.02.2025 11:43:33.062][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("UPDATE b_user SET CONFIRM_CODE = '' WHERE LOGIN = 'bx1ivanchyox-23022025114201@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 11:43:39.032][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[]</div>
+<div style="color: #000000">[23.02.2025 11:43:39.033][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT ID from b_group WHERE STRING_ID = 'EMPLOYEES_s1'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 11:43:43.757][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"12"}]</div>
+<div style="color: #000000">[23.02.2025 11:43:43.762][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyox-23022025114201@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 11:43:46.183][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"9"}]</div>
+<div style="color: #000000">[23.02.2025 11:43:46.184][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">CUser::AppendUserGroup(9, 12)</div>
+<div style="color: #000000">[23.02.2025 11:43:49.024][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[23.02.2025 11:43:49.025][INFO] Пользователь ИванIIIIXXXXVXXIIIXLII ЧёXIIIIIXXXXVXXIIIXLII успешно добавлен на портал</div>
+<div style="color: #000000">[23.02.2025 11:43:49.035][INFO] Ожидание отображения элемента 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 11:43:49.150][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[23.02.2025 11:43:49.159][INFO] Ожидание отображения элемента 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 11:43:49.194][INFO] Ожидание отображения элемента 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 11:43:49.224][INFO] Click: 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 11:44:14.062][INFO] Ожидание отображения элемента 'Кнопка создания проекта' локаторы: //a[@id = 'projectAddButton']</div>
+<div style="color: #000000">[23.02.2025 11:44:14.756][INFO] Click: 'Кнопка создания проекта' локаторы: //a[@id = 'projectAddButton']</div>
+<div style="color: #000000">[23.02.2025 11:44:17.400][INFO] SwitchToFrame: 'Фрейм панели создания проекта' локаторы: //iframe[@class ='side-panel-iframe']</div>
+<div style="color: #000000">[23.02.2025 11:44:44.075][INFO] Ожидание отображения элемента 'Селектор типа проекта - проект' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --project']</div>
+<div style="color: #000000">[23.02.2025 11:44:44.165][INFO] Click: 'Селектор типа проекта - проект' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --project']</div>
+<div style="color: #000000">[23.02.2025 11:44:45.682][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:44:45.925][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:44:48.175][INFO] Ожидание отображения элемента 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 11:44:48.314][INFO] Ожидание отображения элемента 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 11:44:48.344][INFO] Click: 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 11:44:53.565][INFO] Ожидание отображения элемента 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 11:44:53.682][INFO] Ввод текста 'Проект23022025234200' в элемент: 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 11:44:55.644][INFO] Наведение курсора мыши: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:44:58.164][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:44:58.379][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:00.525][INFO] Ожидание отображения элемента 'Селектор уровня конфиденциальности - открытый' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --access-open']</div>
+<div style="color: #000000">[23.02.2025 11:45:01.276][INFO] Ожидание отображения элемента 'Селектор уровня конфиденциальности - открытый' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --access-open']</div>
+<div style="color: #000000">[23.02.2025 11:45:01.796][INFO] Click: 'Селектор уровня конфиденциальности - открытый' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --access-open']</div>
+<div style="color: #000000">[23.02.2025 11:45:04.929][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:05.498][INFO] Наведение курсора мыши: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:07.215][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:07.613][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:10.381][INFO] Ожидание отображения элемента 'Кнопка добавления помощника руководителя' локаторы: //div[@class = 'ui-ctl-label-text socialnetwork-group-create-ex__create--switch-project socialnetwork-group-create-ex__create--switch-nonscrum --project']</div>
+<div style="color: #000000">[23.02.2025 11:45:10.982][INFO] Ожидание отображения элемента 'Кнопка добавления помощника руководителя' локаторы: //div[@class = 'ui-ctl-label-text socialnetwork-group-create-ex__create--switch-project socialnetwork-group-create-ex__create--switch-nonscrum --project']</div>
+<div style="color: #000000">[23.02.2025 11:45:11.564][INFO] Click: 'Кнопка добавления помощника руководителя' локаторы: //div[@class = 'ui-ctl-label-text socialnetwork-group-create-ex__create--switch-project socialnetwork-group-create-ex__create--switch-nonscrum --project']</div>
+<div style="color: #000000">[23.02.2025 11:45:14.672][INFO] Ожидание отображения элемента 'Кнопка добавления сотрудника' локаторы: //*[@id='GROUP_MODERATORS_selector']/div/div/div[1]/span/span</div>
+<div style="color: #000000">[23.02.2025 11:45:15.159][INFO] Ожидание отображения элемента 'Кнопка добавления сотрудника' локаторы: //*[@id='GROUP_MODERATORS_selector']/div/div/div[1]/span/span</div>
+<div style="color: #000000">[23.02.2025 11:45:15.512][INFO] Click: 'Кнопка добавления сотрудника' локаторы: //*[@id='GROUP_MODERATORS_selector']/div/div/div[1]/span/span</div>
+<div style="color: #000000">[23.02.2025 11:45:18.437][INFO] Ожидание отображения элемента 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 11:45:18.916][INFO] Ожидание отображения элемента 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 11:45:19.691][INFO] Ввод текста 'ИванIIIIXXXXVXXIIIXLII ЧёXIIIIIXXXXVXXIIIXLII' в элемент: 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 11:45:23.598][INFO] Ожидание отображения элемента 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 11:45:23.896][INFO] Ввод текста '' в элемент: 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 11:45:25.430][INFO] Ожидание отображения элемента 'Заголовок панели добавления участников проекта' локаторы: //div[@class= 'socialnetwork-group-create-ex__head--title']</div>
+<div style="color: #000000">[23.02.2025 11:45:25.862][INFO] Ожидание отображения элемента 'Заголовок панели добавления участников проекта' локаторы: //div[@class= 'socialnetwork-group-create-ex__head--title']</div>
+<div style="color: #000000">[23.02.2025 11:45:26.429][INFO] Click: 'Заголовок панели добавления участников проекта' локаторы: //div[@class= 'socialnetwork-group-create-ex__head--title']</div>
+<div style="color: #000000">[23.02.2025 11:45:29.729][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:30.196][INFO] Наведение курсора мыши: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:32.380][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:32.680][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 11:45:35.225][INFO] SwitchToDefaultContent</div>
+<div style="color: #000000">[23.02.2025 11:45:35.369][INFO] Ожидание отображения элемента 'Фрейм созданного проекта' локаторы: //iframe[contains(@src, '/workgroups/group/')]</div>
+<div style="color: #000000">[23.02.2025 11:46:23.227][INFO] SwitchToFrame: 'Фрейм созданного проекта' локаторы: //iframe[contains(@src, '/workgroups/group/')]</div>
+<div style="color: #000000">[23.02.2025 11:46:45.340][INFO] Ожидание отображения элемента 'Форма написания описания поста' локаторы: //span[@class = 'feed-add-post-micro-title']</div>
+<div style="color: #000000">[23.02.2025 11:46:45.406][INFO] Ожидание отображения элемента 'Форма написания описания поста' локаторы: //span[@class = 'feed-add-post-micro-title']</div>
+<div style="color: #000000">[23.02.2025 11:46:45.450][INFO] Click: 'Форма написания описания поста' локаторы: //span[@class = 'feed-add-post-micro-title']</div>
+<div style="color: #000000">[23.02.2025 11:46:47.083][INFO] Ожидание отображения элемента 'Фрейм формы написания описания поста' локаторы: //iframe[@class = 'bx-editor-iframe']</div>
+<div style="color: #000000">[23.02.2025 11:46:47.151][INFO] SwitchToFrame: 'Фрейм формы написания описания поста' локаторы: //iframe[@class = 'bx-editor-iframe']</div>
+<div style="color: #000000">[23.02.2025 11:46:47.209][INFO] Ожидание отображения элемента 'Поле написания описания поста' локаторы: //body[@contenteditable='true']</div>
+<div style="color: #000000">[23.02.2025 11:46:47.254][INFO] Ожидание отображения элемента 'Поле написания описания поста' локаторы: //body[@contenteditable='true']</div>
+<div style="color: #000000">[23.02.2025 11:46:47.281][INFO] Ввод текста 'Описание23022025234200' в элемент: 'Поле написания описания поста' локаторы: //body[@contenteditable='true']</div>
+<div style="color: #000000">[23.02.2025 11:46:48.494][INFO] SwitchToDefaultContent</div>
+<div style="color: #000000">[23.02.2025 11:46:48.505][INFO] Ожидание отображения элемента 'Фрейм созданного проекта' локаторы: //iframe[contains(@src, '/workgroups/group/')]</div>
+<div style="color: #000000">[23.02.2025 11:46:48.543][INFO] SwitchToFrame: 'Фрейм созданного проекта' локаторы: //iframe[contains(@src, '/workgroups/group/')]</div>
+<div style="color: #000000">[23.02.2025 11:46:48.619][INFO] Ожидание отображения элемента 'Кнопка отправки поста проекта' локаторы: //span[@id = 'blog-submit-button-save']</div>
+<div style="color: #000000">[23.02.2025 11:46:48.675][INFO] Ожидание отображения элемента 'Кнопка отправки поста проекта' локаторы: //span[@id = 'blog-submit-button-save']</div>
+<div style="color: #000000">[23.02.2025 11:46:48.711][INFO] Click: 'Кнопка отправки поста проекта' локаторы: //span[@id = 'blog-submit-button-save']</div>
+<div style="color: #000000">[23.02.2025 11:46:49.955][INFO] Ожидание отображения элемента 'Кнопка закрытия проекта' локаторы: //div[@class = 'side-panel-label']</div>
+<div style="color: #000000">[23.02.2025 11:47:06.331][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[23.02.2025 11:47:06.338][INFO] Ожидание отображения элемента 'Кнопка закрытия проекта' локаторы: //div[@class = 'side-panel-label']</div>
+<div style="color: #000000">[23.02.2025 11:47:11.368][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[23.02.2025 11:47:11.371][INFO] Click: 'Кнопка закрытия проекта' локаторы: //div[@class = 'side-panel-label']</div>
+<div style="color: #FF0000">[23.02.2025 11:47:21.930][ERROR] Кейс не пройден, причина:</div>
+<div style="color: #FF0000">OpenQA.Selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class = 'side-panel-label']"}</div>
+<div style="color: #FF0000">(Session info: chrome=133.0.6943.127); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.ExecuteAsync(String driverCommandToExecute, Dictionary`2 parameters)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)</div>
+<div style="color: #FF0000">at OpenQA.Selenium.WebDriver.FindElement(String mechanism, String value)</div>
+<div style="color: #FF0000">at atFrameWork2.SeleniumFramework.BaseItem.Execute(Action`2 seleniumCode, IWebDriver driver, Boolean throwAtDebug) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\SeleniumFramework\BaseItem.cs:line 129</div>
+<div style="color: #FF0000">at atFrameWork2.SeleniumFramework.BaseItem.Click(IWebDriver driver) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\SeleniumFramework\BaseItem.cs:line 46</div>
+<div style="color: #FF0000">at ATframework3demo.PageObjects.NewProjectBasePage.closeProject() in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\PageObjects\NewProjectBasePage.cs:line 43</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateProjectAndPost.CreateProjectAndSendPost(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateProjectAndPost.cs:line 56</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateProjectAndPost.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateProjectAndPost.cs:line 19</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 61</div>
+<div style="color: #000000">[23.02.2025 11:47:21.931][INFO] ---------------Кейс 'Создание проекта + пост в ленту проекта' завершён---------------</div>

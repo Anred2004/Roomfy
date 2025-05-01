@@ -1,0 +1,44 @@
+<!DOCTYPE html><div style="color: #000000">[09.02.2025 05:50:31.036][INFO] ---------------Запуск кейса 'Создание комментария под постом в ленте от другого юзера'---------------</div>
+<div style="color: #000000">[09.02.2025 05:50:31.061][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[09.02.2025 05:50:52.826][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[09.02.2025 05:50:52.920][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[09.02.2025 05:50:54.057][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[09.02.2025 05:50:54.119][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[09.02.2025 05:50:54.168][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[09.02.2025 05:50:55.339][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[09.02.2025 05:50:55.373][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[09.02.2025 05:51:11.143][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CModule::IncludeModule("blog");</div>
+<div style="color: #000000">CModule::IncludeModule("socialnetwork");</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">//определяем id блога</div>
+<div style="color: #000000">$arBlog = CBlog::GetByOwnerID(1);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields= array(</div>
+<div style="color: #000000">"TITLE" => "Заголовок",</div>
+<div style="color: #000000">"DETAIL_TEXT" => "Описание",</div>
+<div style="color: #000000">"DATE_PUBLISH" => date('d.m.Y H:i:s'),</div>
+<div style="color: #000000">"PUBLISH_STATUS" => "P",</div>
+<div style="color: #000000">"PERMS_POST" => Array(),</div>
+<div style="color: #000000">"PERMS_COMMENT" => Array (),</div>
+<div style="color: #000000">"SOCNET_RIGHTS" => Array</div>
+<div style="color: #000000">(</div>
+<div style="color: #000000">"UA", "G2"</div>
+<div style="color: #000000">),</div>
+<div style="color: #000000">"=DATE_CREATE" => "now()",</div>
+<div style="color: #000000">"AUTHOR_ID" => $USER->GetID(),</div>
+<div style="color: #000000">"BLOG_ID" => $arBlog['ID'],</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$newID= CBlogPost::Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields["ID"] = $newID;</div>
+<div style="color: #000000">$arParamsNotify = Array(</div>
+<div style="color: #000000">"bSoNet" => true,</div>
+<div style="color: #000000">"UserID" => $USER->GetID(),</div>
+<div style="color: #000000">"user_id" => $USER->GetID(),</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CBlogPost::Notify($arFields, array(), $arParamsNotify);</div>

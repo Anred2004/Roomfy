@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ATframework3demo": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Сергей\\Desktop\\Bitrix\\Bitrix24\\ATlearning\\ATframework3demo\\bin\\Debug\\net8.0",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:51039;http://localhost:51040"
+    }
+  }
+}

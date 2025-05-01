@@ -1,0 +1,218 @@
+<!DOCTYPE html><div style="color: #000000">[23.02.2025 01:30:59.357][INFO] ---------------Запуск кейса 'Создание проекта + пост в ленту проекта'---------------</div>
+<div style="color: #000000">[23.02.2025 01:30:59.380][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[23.02.2025 01:31:16.047][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 01:31:16.179][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 01:31:17.371][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:31:17.421][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:31:17.459][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:31:18.657][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:31:18.690][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:31:30.166][INFO] Добавление пользователя ИванIXXXXVXIIIXXXIXXIX ЧёIIIXXXXVXIIIXXXIXXIX на портал скриптом</div>
+<div style="color: #000000">[23.02.2025 01:31:30.298][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["ADD_NAME"] = 'ИванIXXXXVXIIIXXXIXXIX';</div>
+<div style="color: #000000">$arFields["ADD_LAST_NAME"] = 'ЧёIIIXXXXVXIIIXXXIXXIX';</div>
+<div style="color: #000000">$arFields["ADD_EMAIL"] = 'bx1ivanchyoi-23022025013129@test.com';</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = '0';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($arFields["DEPARTMENT_ID"] == 0)</div>
+<div style="color: #000000">unset($arFields["DEPARTMENT_ID"]);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = [$arFields["DEPARTMENT_ID"]];</div>
+<div style="color: #000000">$SITE_ID = "s1";</div>
+<div style="color: #000000">$strError = "";</div>
+<div style="color: #000000">$userID = 0;</div>
+<div style="color: #000000">$userLogin = $arFields["ADD_EMAIL"];</div>
+<div style="color: #000000">$userID = CIntranetInviteDialog::AddNewUser($SITE_ID, $arFields, $strError);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($userID > 0) {</div>
+<div style="color: #000000">echo "Пользователь ";</div>
+<div style="color: #000000">echo $userLogin;</div>
+<div style="color: #000000">echo " успешно добавлен на портал с ID ";</div>
+<div style="color: #000000">if(is_array($userID))</div>
+<div style="color: #000000">echo $userID[0];</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $userID;</div>
+<div style="color: #000000">echo "<br/>";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($strError != "")</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if(is_array($strError))</div>
+<div style="color: #000000">print_r($strError);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $strError;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[23.02.2025 01:31:36.488][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь bx1ivanchyoi-23022025013129@test.com успешно добавлен на портал с ID 35<br/></div>
+<div style="color: #000000">[23.02.2025 01:31:36.517][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyoi-23022025013129@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 01:31:38.203][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"35"}]</div>
+<div style="color: #000000">[23.02.2025 01:31:40.632][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT GROUP_ID from b_user_group WHERE USER_ID = '35'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 01:31:43.654][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"GROUP_ID":"3"},{"GROUP_ID":"4"},{"GROUP_ID":"14"}]</div>
+<div style="color: #000000">[23.02.2025 01:31:43.660][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["PASSWORD"] = '?^|Ha|1<,aA1';</div>
+<div style="color: #000000">$groupIDS = '3,4,14';</div>
+<div style="color: #000000">$userID = '35';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser = new CUser;</div>
+<div style="color: #000000">$arGroupsIDs = explode(",", $groupIDS);</div>
+<div style="color: #000000">$rsUser = CUser::GetByID($userID);</div>
+<div style="color: #000000">$arUser = $rsUser->Fetch();</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">foreach ($arFields as $key => $value)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if($key != "PASSWORD")</div>
+<div style="color: #000000">$arUser[$key] = $value;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$fields = array(</div>
+<div style="color: #000000">"NAME" => $arUser["NAME"],</div>
+<div style="color: #000000">"LAST_NAME" => $arUser["LAST_NAME"],</div>
+<div style="color: #000000">"EMAIL" => $arUser["EMAIL"],</div>
+<div style="color: #000000">"LOGIN" => $arUser["LOGIN"],</div>
+<div style="color: #000000">"LID" => $arUser["LID"],</div>
+<div style="color: #000000">"ACTIVE" => $arUser["ACTIVE"],</div>
+<div style="color: #000000">"GROUP_ID" => $arGroupsIDs,</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if($arFields["PASSWORD"] != null)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">$fields["PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">$fields["CONFIRM_PASSWORD"] = $arFields["PASSWORD"];</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$objUser->Update($userID, $fields);</div>
+<div style="color: #000000">$res = $objUser->Login($arUser["EMAIL"], $newPassword);</div>
+<div style="color: #000000">if (!is_array($res)) {</div>
+<div style="color: #000000">echo "Успешная авторизация";</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Авторизация не удалась:\n";</div>
+<div style="color: #000000">print_r($res);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[23.02.2025 01:31:46.534][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Успешная авторизация</div>
+<div style="color: #000000">[23.02.2025 01:31:46.549][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("UPDATE b_user SET CONFIRM_CODE = '' WHERE LOGIN = 'bx1ivanchyoi-23022025013129@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 01:31:49.175][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[]</div>
+<div style="color: #000000">[23.02.2025 01:31:49.177][INFO] Добавляем пользователя bx1ivanchyoi-23022025013129@test.com в группу Фриланс скриптом</div>
+<div style="color: #000000">[23.02.2025 01:31:49.187][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("SELECT ID from b_sonet_group WHERE NAME = 'Фриланс'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 01:31:51.762][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"37"}]</div>
+<div style="color: #000000">[23.02.2025 01:31:51.813][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyoi-23022025013129@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 01:31:54.792][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"35"}]</div>
+<div style="color: #000000">[23.02.2025 01:31:54.798][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["USER_ID"] = '35';</div>
+<div style="color: #000000">$arFields["GROUP_ID"] = '37';</div>
+<div style="color: #000000">$arFields["ROLE"] = 'K';</div>
+<div style="color: #000000">$arFields["=DATE_CREATE"] = $GLOBALS["DB"]->CurrentTimeFunction();</div>
+<div style="color: #000000">$arFields["=DATE_UPDATE"] = $GLOBALS["DB"]->CurrentTimeFunction();</div>
+<div style="color: #000000">$arFields["INITIATED_BY_TYPE"] = 'G';</div>
+<div style="color: #000000">$arFields["INITIATED_BY_USER_ID"] = $USER->GetID();</div>
+<div style="color: #000000">$arFields["MESSAGE"] = false;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">CModule::IncludeModule("socialnetwork");</div>
+<div style="color: #000000">$ID = CSocNetUserToGroup::Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($ID == true) {</div>
+<div style="color: #000000">echo "Пользователь с ID = ";</div>
+<div style="color: #000000">echo $arFields["USER_ID"];</div>
+<div style="color: #000000">echo " успешно добавлен в группу с ID = ";</div>
+<div style="color: #000000">echo $arFields["GROUP_ID"];</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Добавление пользователя в группу не сработало";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[23.02.2025 01:31:59.333][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь с ID = 35 успешно добавлен в группу с ID = 37</div>
+<div style="color: #000000">[23.02.2025 01:31:59.339][INFO] Пользователь 35 успешно добавлен в группу 37</div>
+<div style="color: #000000">[23.02.2025 01:31:59.341][INFO] Пользователь ИванIXXXXVXIIIXXXIXXIX ЧёIIIXXXXVXIIIXXXIXXIX успешно добавлен на портал</div>
+<div style="color: #000000">[23.02.2025 01:31:59.693][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[23.02.2025 01:31:59.723][INFO] Ожидание отображения элемента 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[23.02.2025 01:32:00.224][INFO] Ожидание отображения элемента 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[23.02.2025 01:32:00.493][INFO] Click: 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[23.02.2025 01:32:16.981][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[23.02.2025 01:32:23.232][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 01:32:23.334][INFO] Ввод текста 'bx1ivanchyoi-23022025013129@test.com' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 01:32:24.604][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:24.684][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:24.715][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:25.859][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:25.923][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:40.702][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[23.02.2025 01:32:40.817][INFO] Ожидание отображения элемента 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[23.02.2025 01:32:41.053][INFO] Ожидание отображения элемента 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[23.02.2025 01:32:42.356][INFO] Click: 'Пункт левого меню Новости' локаторы: //li[@id='bx_left_menu_menu_live_feed']</div>
+<div style="color: #000000">[23.02.2025 01:32:52.233][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[23.02.2025 01:32:57.069][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 01:32:57.137][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 01:32:58.465][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:58.519][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:58.555][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:59.719][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:32:59.763][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 01:33:08.248][INFO] Ожидание отображения элемента 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 01:33:09.053][INFO] Получен размер '{Width=240, Height=686}'. Элемент: 'Область с пунктами левого меню' локаторы: //div[@id='menu-items-block']</div>
+<div style="color: #000000">[23.02.2025 01:33:09.271][INFO] Ожидание отображения элемента 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 01:33:10.157][INFO] Ожидание отображения элемента 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 01:33:10.770][INFO] Click: 'Пункт левого меню Группы' локаторы: //li[@id='bx_left_menu_menu_all_groups']</div>
+<div style="color: #000000">[23.02.2025 01:33:19.060][INFO] Ожидание отображения элемента 'Кнопка создания проекта' локаторы: //a[@id = 'projectAddButton']</div>
+<div style="color: #000000">[23.02.2025 01:33:19.592][INFO] Click: 'Кнопка создания проекта' локаторы: //a[@id = 'projectAddButton']</div>
+<div style="color: #000000">[23.02.2025 01:33:22.135][INFO] SwitchToFrame: 'Фрейм панели создания проекта' локаторы: //iframe[@class ='side-panel-iframe']</div>
+<div style="color: #000000">[23.02.2025 01:33:25.325][INFO] Ожидание отображения элемента 'Тип проекта' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --project']</div>
+<div style="color: #000000">[23.02.2025 01:33:26.618][INFO] Click: 'Тип проекта' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --project']</div>
+<div style="color: #000000">[23.02.2025 01:33:31.768][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:31.866][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:34.003][INFO] Ожидание отображения элемента 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 01:33:35.762][INFO] Click: 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 01:33:37.545][INFO] Ожидание отображения элемента 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 01:33:37.632][INFO] Ввод текста 'Проект23022025133129' в элемент: 'Поле Название проекта' локаторы: //input[@id='GROUP_NAME_input']</div>
+<div style="color: #000000">[23.02.2025 01:33:38.760][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:38.801][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:40.116][INFO] Наведение курсора мыши: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:42.748][INFO] Ожидание отображения элемента 'Уровень конфиденциальности' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --access-open']</div>
+<div style="color: #000000">[23.02.2025 01:33:48.031][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[23.02.2025 01:33:48.033][INFO] Click: 'Уровень конфиденциальности' локаторы: //div[@class = 'socialnetwork-group-create-ex__group-selector--logo --access-open']</div>
+<div style="color: #000000">[23.02.2025 01:33:49.978][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:50.251][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:33:52.550][INFO] Ожидание отображения элемента 'Кнопка добавления сотрудника' локаторы: //*[@id='GROUP_USERS_selector']/div/div/div[1]/span/span</div>
+<div style="color: #000000">[23.02.2025 01:33:52.814][INFO] Ожидание отображения элемента 'Кнопка добавления сотрудника' локаторы: //*[@id='GROUP_USERS_selector']/div/div/div[1]/span/span</div>
+<div style="color: #000000">[23.02.2025 01:33:52.949][INFO] Click: 'Кнопка добавления сотрудника' локаторы: //*[@id='GROUP_USERS_selector']/div/div/div[1]/span/span</div>
+<div style="color: #000000">[23.02.2025 01:33:56.083][INFO] Ожидание отображения элемента 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 01:33:56.549][INFO] Ожидание отображения элемента 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 01:33:56.788][INFO] Ввод текста 'ИванIXXXXVXIIIXXXIXXIX ЧёIIIXXXXVXIIIXXXIXXIX' в элемент: 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 01:34:00.289][INFO] Ожидание отображения элемента 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 01:34:00.701][INFO] Ввод текста '' в элемент: 'Поле добавления нового сотрудника' локаторы: //input[@class='ui-tag-selector-item ui-tag-selector-text-box']</div>
+<div style="color: #000000">[23.02.2025 01:34:02.388][INFO] Ожидание отображения элемента 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:34:02.685][INFO] Click: 'Кнопка Продолжить' локаторы: //button[@id='sonet_group_create_popup_form_button_submit']</div>
+<div style="color: #000000">[23.02.2025 01:34:05.242][INFO] ---------------Кейс 'Создание проекта + пост в ленту проекта' завершён---------------</div>

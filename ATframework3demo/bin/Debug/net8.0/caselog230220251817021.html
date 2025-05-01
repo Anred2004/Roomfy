@@ -1,0 +1,75 @@
+<!DOCTYPE html><div style="color: #000000">[23.02.2025 06:17:02.797][INFO] ---------------Запуск кейса 'Создание проекта + пост в ленту проекта'---------------</div>
+<div style="color: #000000">[23.02.2025 06:17:02.808][INFO] OpenUri: http://192.168.1.42/</div>
+<div style="color: #000000">[23.02.2025 06:17:25.681][INFO] Ожидание отображения элемента 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 06:17:25.840][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле для ввода логина' локаторы: //input[@id='login' or @name='USER_LOGIN']</div>
+<div style="color: #000000">[23.02.2025 06:17:27.009][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 06:17:27.071][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 06:17:27.106][INFO] Ввод текста [логирование отключено] в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 06:17:28.282][INFO] Ожидание отображения элемента 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 06:17:28.819][INFO] Ввод текста '' в элемент: 'Поле для ввода пароля' локаторы: //input[@id='password' or @name='USER_PASSWORD']</div>
+<div style="color: #000000">[23.02.2025 06:19:58.774][INFO] Добавление пользователя ИванIIXXXXVXVIIIXVIIII ЧёIIIIXXXXVXVIIIXVIIII на портал скриптом</div>
+<div style="color: #000000">[23.02.2025 06:19:58.780][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">$arFields["ADD_NAME"] = 'ИванIIXXXXVXVIIIXVIIII';</div>
+<div style="color: #000000">$arFields["ADD_LAST_NAME"] = 'ЧёIIIIXXXXVXVIIIXVIIII';</div>
+<div style="color: #000000">$arFields["ADD_EMAIL"] = 'bx1ivanchyoi-23022025061958@test.com';</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = '1';</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($arFields["DEPARTMENT_ID"] == 0)</div>
+<div style="color: #000000">unset($arFields["DEPARTMENT_ID"]);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">$arFields["DEPARTMENT_ID"] = [$arFields["DEPARTMENT_ID"]];</div>
+<div style="color: #000000">$SITE_ID = "s1";</div>
+<div style="color: #000000">$strError = "";</div>
+<div style="color: #000000">$userID = 0;</div>
+<div style="color: #000000">$userLogin = $arFields["ADD_EMAIL"];</div>
+<div style="color: #000000">$userID = CIntranetInviteDialog::AddNewUser($SITE_ID, $arFields, $strError);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($userID > 0) {</div>
+<div style="color: #000000">echo "Пользователь ";</div>
+<div style="color: #000000">echo $userLogin;</div>
+<div style="color: #000000">echo " успешно добавлен на портал с ID ";</div>
+<div style="color: #000000">if(is_array($userID))</div>
+<div style="color: #000000">echo $userID[0];</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $userID;</div>
+<div style="color: #000000">echo "<br/>";</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($strError != "")</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">if(is_array($strError))</div>
+<div style="color: #000000">print_r($strError);</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">echo $strError;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[23.02.2025 06:20:17.614][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь bx1ivanchyoi-23022025061958@test.com успешно добавлен на портал с ID 49<br/></div>
+<div style="color: #000000">[23.02.2025 06:20:17.763][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000">$res = $DB->Query("select ID from b_user where EMAIL = 'bx1ivanchyoi-23022025061958@test.com'");</div>
+<div style="color: #000000">$rows = [];</div>
+<div style="color: #000000">while ($row = $res->Fetch())</div>
+<div style="color: #000000">$rows[] = $row;</div>
+<div style="color: #000000">echo json_encode($rows);</div>
+<div style="color: #000000">[23.02.2025 06:20:22.637][INFO] Результат выполнения php:</div>
+<div style="color: #000000">[{"ID":"49"}]</div>
+<div style="color: #FF0000">[23.02.2025 06:20:31.230][ERROR] Кейс не пройден, причина:</div>
+<div style="color: #FF0000">System.IO.IOException: The process cannot access the file 'C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\bin\Debug\net8.0\caselog230220251817021.html' because it is being used by another process.</div>
+<div style="color: #FF0000">at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)</div>
+<div style="color: #FF0000">at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)</div>
+<div style="color: #FF0000">at System.IO.File.OpenHandle(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)</div>
+<div style="color: #FF0000">at System.IO.File.WriteToFile(String path, FileMode mode, String contents, Encoding encoding)</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.LogTools.LogMessage.WriteHtml(String filePath, String text) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\LogTools\LogMessage.cs:line 35</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.LogTools.Log.Add(LogMessage message) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\LogTools\Log.cs:line 32</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.LogTools.Log.Info(String message) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\LogTools\Log.cs:line 20</div>
+<div style="color: #FF0000">at AquaTestFramework.CommonFramework.BitrixCPinteraction.PHPcommandLineExecutor.Execute(String phpCode) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PHPcommandLineExecutor.cs:line 34</div>
+<div style="color: #FF0000">at ATframework3demo.BaseFramework.BitrixCPinterraction.PortalDatabaseExecutor.ExecuteQuery(String query, Uri portalUri, User portalAdmin) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\PortalDatabaseExecutor.cs:line 26</div>
+<div style="color: #FF0000">at ATframework3demo.BaseFramework.BitrixCPinterraction.EmployeeTools.GetUserGroupIds(String targetUserId, Uri portalUri, User userToAuth) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\EmployeeTools.cs:line 165</div>
+<div style="color: #FF0000">at ATframework3demo.BaseFramework.BitrixCPinterraction.EmployeeTools.SetUserPassword(User user, Uri portalUri, User adminUser) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\EmployeeTools.cs:line 99</div>
+<div style="color: #FF0000">at ATframework3demo.BaseFramework.BitrixCPinterraction.EmployeeTools.AddNewUserByPHP(User user, User portalAdmin, Uri portalUri, Int32 depID) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\EmployeeTools.cs:line 75</div>
+<div style="color: #FF0000">at ATframework3demo.BaseFramework.BitrixCPinterraction.EmployeeTools.AddNewIntranetUser(User userToAdd, User portalAdmin, Uri portalUrl, Int32 departmentId) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\BitrixCPinterraction\EmployeeTools.cs:line 18</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.CreatePortalTestUser(Boolean extranetUser) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 123</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateProjectAndPost.CreateProjectAndSendPost(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateProjectAndPost.cs:line 30</div>
+<div style="color: #FF0000">at ATframework3demo.TestCases.Case_Bitrix24_CreateProjectAndPost.<GetCases>b__0_0(PortalHomePage homePage) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\TestCases\Case_Bitrix24_CreateProjectAndPost.cs:line 19</div>
+<div style="color: #FF0000">at atFrameWork2.BaseFramework.TestCase.Execute(PortalInfo testPortal, Action uiRefresher) in C:\Users\Сергей\Desktop\Bitrix\Bitrix24\ATlearning\ATframework3demo\BaseFramework\TestCase.cs:line 61</div>
+<div style="color: #000000">[23.02.2025 06:20:31.231][INFO] ---------------Кейс 'Создание проекта + пост в ленту проекта' завершён---------------</div>

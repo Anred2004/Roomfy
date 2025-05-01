@@ -1,0 +1,225 @@
+<!DOCTYPE html><div style="color: #000000">[30.04.2025 12:31:34.792][INFO] ---------------Запуск кейса 'Отправка личного сообщения пользователю'---------------</div>
+<div style="color: #000000">[30.04.2025 12:31:34.799][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[30.04.2025 12:31:44.880][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Подключаем необходимые модели</div>
+<div style="color: #000000">use Up\Roomfy\Model\PostsTable;</div>
+<div style="color: #000000">use Up\Roomfy\Model\PostLocationTable;</div>
+<div style="color: #000000">use Bitrix\Main\Type\DateTime;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Функция для создания тестового объявления с локацией</div>
+<div style="color: #000000">function createTestPostWithLocation($userId, $postTypeId, $title, $description = '', $isActive = true, $isPromoted = false)</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">// Создаем основное объявление</div>
+<div style="color: #000000">$postResult = PostsTable::add([</div>
+<div style="color: #000000">'USER_ID' => $userId,</div>
+<div style="color: #000000">'POST_TYPE_ID' => $postTypeId,</div>
+<div style="color: #000000">'TITLE' => $title,</div>
+<div style="color: #000000">'DESCRIPTION' => $description,</div>
+<div style="color: #000000">'IS_ACTIVE' => $isActive ? 'Y' : 'N',</div>
+<div style="color: #000000">'IS_PROMOTED' => $isPromoted ? 'Y' : 'N',</div>
+<div style="color: #000000">'CREATED_AT' => new DateTime(),</div>
+<div style="color: #000000">'UPDATED_AT' => new DateTime(),</div>
+<div style="color: #000000">]);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if (!$postResult->isSuccess())</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">echo "Ошибка при создании объявления: " . implode(', ', $postResult->getErrorMessages()) . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$postId = $postResult->getId();</div>
+<div style="color: #000000">echo "Объявление успешно создано, ID: $postId\n";</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Добавляем локацию к объявлению</div>
+<div style="color: #000000">$locationResult = PostLocationTable::add([</div>
+<div style="color: #000000">'POST_ID' => $postId,</div>
+<div style="color: #000000">'LATITUDE' => 54.7104,</div>
+<div style="color: #000000">'LONGITUDE' => 20.5106,</div>
+<div style="color: #000000">'COUNTRY' => 'Россия',</div>
+<div style="color: #000000">'CITY' => 'Калининград',</div>
+<div style="color: #000000">'STREET' =>  '',</div>
+<div style="color: #000000">'HOUSE_NUMBER' => '',</div>
+<div style="color: #000000">'RADIUS' => 1.0,</div>
+<div style="color: #000000">]);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($locationResult->isSuccess())</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">echo "Локация для объявления успешно добавлена\n";</div>
+<div style="color: #000000">return $postId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">else</div>
+<div style="color: #000000">{</div>
+<div style="color: #000000">echo "Ошибка при добавлении локации: " . implode(', ', $locationResult->getErrorMessages()) . "\n";</div>
+<div style="color: #000000">// Удаляем созданное объявление, если не удалось добавить локацию</div>
+<div style="color: #000000">PostsTable::delete($postId);</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$userId = 19; // ID пользователя</div>
+<div style="color: #000000">$postTypeId = 1; // ID типа объявления</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Создаем 10 тестовых объявлений в Калининграде</div>
+<div style="color: #000000">for ($i = 1; $i <= 1; $i++) {</div>
+<div style="color: #000000">$title = "Обьявление30042025123144";</div>
+<div style="color: #000000">$description = "Описание30042025123144";</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">// Создаем объявление с локацией</div>
+<div style="color: #000000">$postId = createTestPostWithLocation(</div>
+<div style="color: #000000">$userId,</div>
+<div style="color: #000000">$postTypeId,</div>
+<div style="color: #000000">$title,</div>
+<div style="color: #000000">$description,</div>
+<div style="color: #000000">true,</div>
+<div style="color: #000000">false</div>
+<div style="color: #000000">);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">[30.04.2025 12:31:47.519][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Объявление успешно создано, ID: 71</div>
+<div style="color: #000000">Локация для объявления успешно добавлена</div>
+<div style="color: #000000">[30.04.2025 12:31:47.522][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">use Bitrix\Main\Security\Password;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">function createTestUser($userData) {</div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"NAME"              => $userData['NAME'],</div>
+<div style="color: #000000">"LAST_NAME"         => $userData['LAST_NAME'],</div>
+<div style="color: #000000">"EMAIL"             => $userData['EMAIL'],</div>
+<div style="color: #000000">"LOGIN"             => $userData['LOGIN'],</div>
+<div style="color: #000000">"PASSWORD"          => $userData['PASSWORD'],</div>
+<div style="color: #000000">"CONFIRM_PASSWORD"  => $userData['PASSWORD'],</div>
+<div style="color: #000000">"ACTIVE"            => "Y",</div>
+<div style="color: #000000">"GROUP_ID"          => $userData['GROUP_ID'] ?? [2],</div>
+<div style="color: #000000">"LID"               => "s1",</div>
+<div style="color: #000000">"PERSONAL_GENDER"   => $userData['GENDER'] ?? '',</div>
+<div style="color: #000000">"PERSONAL_PHONE"    => $userData['PHONE'] ?? '',</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$ID = $user->Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ((int)$ID > 0) {</div>
+<div style="color: #000000">echo "Пользователь {$userData['LOGIN']} успешно создан, ID: {$ID}\n";</div>
+<div style="color: #000000">return $ID;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Ошибка при создании пользователя {$userData['LOGIN']}: " . $user->LAST_ERROR . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$users = [</div>
+<div style="color: #000000">[</div>
+<div style="color: #000000">'NAME' => '',</div>
+<div style="color: #000000">'EMAIL' => 'ivanov@example.com',</div>
+<div style="color: #000000">'LOGIN' => 'login30042025123147',</div>
+<div style="color: #000000">'PASSWORD' => 'passwd30042025123147'</div>
+<div style="color: #000000">]</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$createdUsers = [];</div>
+<div style="color: #000000">foreach ($users as $userData) {</div>
+<div style="color: #000000">$userId = createTestUser($userData);</div>
+<div style="color: #000000">if ($userId) {</div>
+<div style="color: #000000">$createdUsers[] = $userId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">echo "Создано пользователей: " . count($createdUsers) . "\n";</div>
+<div style="color: #000000">echo "ID созданных пользователей: " . implode(', ', $createdUsers) . "\n";</div>
+<div style="color: #000000">[30.04.2025 12:31:49.291][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь login30042025123147 успешно создан, ID: 36</div>
+<div style="color: #000000">Создано пользователей: 1</div>
+<div style="color: #000000">ID созданных пользователей: 36</div>
+<div style="color: #000000">[30.04.2025 12:31:49.293][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">use Bitrix\Main\Security\Password;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">function createTestUser($userData) {</div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"NAME"              => $userData['NAME'],</div>
+<div style="color: #000000">"LAST_NAME"         => $userData['LAST_NAME'],</div>
+<div style="color: #000000">"EMAIL"             => $userData['EMAIL'],</div>
+<div style="color: #000000">"LOGIN"             => $userData['LOGIN'],</div>
+<div style="color: #000000">"PASSWORD"          => $userData['PASSWORD'],</div>
+<div style="color: #000000">"CONFIRM_PASSWORD"  => $userData['PASSWORD'],</div>
+<div style="color: #000000">"ACTIVE"            => "Y",</div>
+<div style="color: #000000">"GROUP_ID"          => $userData['GROUP_ID'] ?? [2],</div>
+<div style="color: #000000">"LID"               => "s1",</div>
+<div style="color: #000000">"PERSONAL_GENDER"   => $userData['GENDER'] ?? '',</div>
+<div style="color: #000000">"PERSONAL_PHONE"    => $userData['PHONE'] ?? '',</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$ID = $user->Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ((int)$ID > 0) {</div>
+<div style="color: #000000">echo "Пользователь {$userData['LOGIN']} успешно создан, ID: {$ID}\n";</div>
+<div style="color: #000000">return $ID;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Ошибка при создании пользователя {$userData['LOGIN']}: " . $user->LAST_ERROR . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$users = [</div>
+<div style="color: #000000">[</div>
+<div style="color: #000000">'NAME' => '',</div>
+<div style="color: #000000">'EMAIL' => 'ivanov@example.com',</div>
+<div style="color: #000000">'LOGIN' => 'login30042025123149',</div>
+<div style="color: #000000">'PASSWORD' => 'passwd30042025123149'</div>
+<div style="color: #000000">]</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$createdUsers = [];</div>
+<div style="color: #000000">foreach ($users as $userData) {</div>
+<div style="color: #000000">$userId = createTestUser($userData);</div>
+<div style="color: #000000">if ($userId) {</div>
+<div style="color: #000000">$createdUsers[] = $userId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">echo "Создано пользователей: " . count($createdUsers) . "\n";</div>
+<div style="color: #000000">echo "ID созданных пользователей: " . implode(', ', $createdUsers) . "\n";</div>
+<div style="color: #000000">[30.04.2025 12:31:51.065][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь login30042025123149 успешно создан, ID: 37</div>
+<div style="color: #000000">Создано пользователей: 1</div>
+<div style="color: #000000">ID созданных пользователей: 37</div>
+<div style="color: #000000">[30.04.2025 12:31:51.077][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:31:51.154][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:31:51.185][INFO] Ввод текста '' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:31:52.275][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:31:52.308][INFO] Ввод текста 'login30042025123147' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:31:53.445][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:31:53.510][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:31:53.543][INFO] Ввод текста '' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:31:54.677][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:31:54.722][INFO] Ввод текста 'passwd30042025123147' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:31:55.858][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 12:31:55.913][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 12:31:55.948][INFO] Click: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 12:31:59.741][INFO] Ожидание отображения элемента 'Раздел Жилье активный' локаторы: //li[@class='tab-btn is-active ' and @data-tab='find_flat']</div>
+<div style="color: #000000">[30.04.2025 12:32:29.842][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[30.04.2025 12:32:29.854][INFO] Ожидание отображения элемента 'Раздел Жилье неактивный' локаторы: //li[@class='tab-btn ' and @data-tab='find_flat']</div>
+<div style="color: #000000">[30.04.2025 12:32:29.897][INFO] Ожидание отображения элемента 'Раздел Жилье неактивный' локаторы: //li[@class='tab-btn ' and @data-tab='find_flat']</div>
+<div style="color: #000000">[30.04.2025 12:32:29.933][INFO] Click: 'Раздел Жилье неактивный' локаторы: //li[@class='tab-btn ' and @data-tab='find_flat']</div>
+<div style="color: #000000">[30.04.2025 12:32:31.095][INFO] Ожидание отображения элемента 'Пост в разделе жилье' локаторы: //div[contains(@class, 'card post-card ')][.//span[text()='Обьявление30042025123144'] and .//a[@class='button is-small']]</div>
+<div style="color: #000000">[30.04.2025 12:32:31.144][INFO] Наведение курсора мыши: 'Пост в разделе жилье' локаторы: //div[contains(@class, 'card post-card ')][.//span[text()='Обьявление30042025123144'] and .//a[@class='button is-small']]</div>
+<div style="color: #000000">[30.04.2025 12:32:32.465][INFO] Ожидание отображения элемента 'Кнопка Написать' локаторы: //div[@class='card post-card '][.//span[text()='Обьявление30042025123144']]//a[@class='button is-small' and contains(text(), 'Написать')]</div>
+<div style="color: #000000">[30.04.2025 12:32:32.509][INFO] Ожидание отображения элемента 'Кнопка Написать' локаторы: //div[@class='card post-card '][.//span[text()='Обьявление30042025123144']]//a[@class='button is-small' and contains(text(), 'Написать')]</div>
+<div style="color: #000000">[30.04.2025 12:32:32.547][INFO] Click: 'Кнопка Написать' локаторы: //div[@class='card post-card '][.//span[text()='Обьявление30042025123144']]//a[@class='button is-small' and contains(text(), 'Написать')]</div>
+<div style="color: #000000">[30.04.2025 12:32:35.193][INFO] Ожидание отображения элемента 'Форма написания сообщения' локаторы: //textarea[@id='message']</div>
+<div style="color: #000000">[30.04.2025 12:32:35.242][INFO] Ожидание отображения элемента 'Форма написания сообщения' локаторы: //textarea[@id='message']</div>
+<div style="color: #000000">[30.04.2025 12:32:35.275][INFO] Click: 'Форма написания сообщения' локаторы: //textarea[@id='message']</div>
+<div style="color: #000000">[30.04.2025 12:32:36.419][INFO] Ожидание отображения элемента 'Форма написания сообщения' локаторы: //textarea[@id='message']</div>
+<div style="color: #000000">[30.04.2025 12:32:36.463][INFO] Ожидание отображения элемента 'Форма написания сообщения' локаторы: //textarea[@id='message']</div>
+<div style="color: #000000">[30.04.2025 12:32:36.505][INFO] Ввод текста 'Привет мой друг!30042025123147' в элемент: 'Форма написания сообщения' локаторы: //textarea[@id='message']</div>
+<div style="color: #000000">[30.04.2025 12:32:38.144][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[30.04.2025 12:32:42.838][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:32:42.880][INFO] Ввод текста 'login30042025123149' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 12:32:44.030][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:32:44.073][INFO] Ввод текста 'passwd30042025123149' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 12:32:45.253][INFO] Ожидание отображения элемента 'Раздел Чат на главной странице' локаторы: //a[@href = '/chat']</div>

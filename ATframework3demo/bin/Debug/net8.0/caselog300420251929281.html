@@ -1,0 +1,136 @@
+<!DOCTYPE html><div style="color: #000000">[30.04.2025 07:29:28.762][INFO] ---------------Запуск кейса 'Удаление пользователя через Админ-панель'---------------</div>
+<div style="color: #000000">[30.04.2025 07:29:28.768][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[30.04.2025 07:29:35.226][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000">function deleteUserById($userId) {</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$DB->Query("DELETE FROM up_roomfy_messages WHERE RECIEVER_ID = $userId");</div>
+<div style="color: #000000">$DB->Query("DELETE FROM up_roomfy_posts WHERE USER_ID = $userId");</div>
+<div style="color: #000000">$DB->Query("DELETE FROM b_user_group WHERE USER_ID = $userId");</div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000">$result = $user->Delete($userId);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ($result) {</div>
+<div style="color: #000000">echo "Пользователь с ID {$userId} успешно удален.\n";</div>
+<div style="color: #000000">return true;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Ошибка при удалении пользователя с ID {$userId}: " . $user->LAST_ERROR . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">function deleteAllUsersExcept($excludedIds) {</div>
+<div style="color: #000000">global $DB;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$excludedIdsList = implode(',', $excludedIds); // Преобразуем массив в строку для SQL-запроса</div>
+<div style="color: #000000">$query = "</div>
+<div style="color: #000000">SELECT ID</div>
+<div style="color: #000000">FROM b_user</div>
+<div style="color: #000000">WHERE ID NOT IN ($excludedIdsList)</div>
+<div style="color: #000000">";</div>
+<div style="color: #000000">$result = $DB->Query($query);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">while ($row = $result->Fetch()) {</div>
+<div style="color: #000000">$userId = $row['ID'];</div>
+<div style="color: #000000">deleteUserById($userId);</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$excludedUserIds = [1, 20]; // Список ID пользователей, которых не нужно удалять</div>
+<div style="color: #000000">deleteAllUsersExcept($excludedUserIds);</div>
+<div style="color: #000000">[30.04.2025 07:29:38.692][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь с ID 55 успешно удален.</div>
+<div style="color: #000000">[30.04.2025 07:29:38.694][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">use Bitrix\Main\Security\Password;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">function createTestUser($userData) {</div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"NAME"              => $userData['NAME'],</div>
+<div style="color: #000000">"LAST_NAME"         => $userData['LAST_NAME'],</div>
+<div style="color: #000000">"EMAIL"             => $userData['EMAIL'],</div>
+<div style="color: #000000">"LOGIN"             => $userData['LOGIN'],</div>
+<div style="color: #000000">"PASSWORD"          => $userData['PASSWORD'],</div>
+<div style="color: #000000">"CONFIRM_PASSWORD"  => $userData['PASSWORD'],</div>
+<div style="color: #000000">"ACTIVE"            => "Y",</div>
+<div style="color: #000000">"GROUP_ID"          => $userData['GROUP_ID'] ?? [2],</div>
+<div style="color: #000000">"LID"               => "s1",</div>
+<div style="color: #000000">"PERSONAL_GENDER"   => $userData['GENDER'] ?? '',</div>
+<div style="color: #000000">"PERSONAL_PHONE"    => $userData['PHONE'] ?? '',</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$ID = $user->Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ((int)$ID > 0) {</div>
+<div style="color: #000000">echo "Пользователь {$userData['LOGIN']} успешно создан, ID: {$ID}\n";</div>
+<div style="color: #000000">return $ID;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Ошибка при создании пользователя {$userData['LOGIN']}: " . $user->LAST_ERROR . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$users = [</div>
+<div style="color: #000000">[</div>
+<div style="color: #000000">'NAME' => '',</div>
+<div style="color: #000000">'EMAIL' => 'ivanov@example.com',</div>
+<div style="color: #000000">'LOGIN' => 'login30042025192938',</div>
+<div style="color: #000000">'PASSWORD' => 'passwd30042025192938'</div>
+<div style="color: #000000">]</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$createdUsers = [];</div>
+<div style="color: #000000">foreach ($users as $userData) {</div>
+<div style="color: #000000">$userId = createTestUser($userData);</div>
+<div style="color: #000000">if ($userId) {</div>
+<div style="color: #000000">$createdUsers[] = $userId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">echo "Создано пользователей: " . count($createdUsers) . "\n";</div>
+<div style="color: #000000">echo "ID созданных пользователей: " . implode(', ', $createdUsers) . "\n";</div>
+<div style="color: #000000">[30.04.2025 07:29:40.596][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь login30042025192938 успешно создан, ID: 56</div>
+<div style="color: #000000">Создано пользователей: 1</div>
+<div style="color: #000000">ID созданных пользователей: 56</div>
+<div style="color: #000000">[30.04.2025 07:29:40.610][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:29:40.681][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:29:40.716][INFO] Ввод текста '' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:29:41.831][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:29:41.877][INFO] Ввод текста 'admin' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:29:42.995][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:29:43.073][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:29:43.118][INFO] Ввод текста '' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:29:44.284][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:29:44.332][INFO] Ввод текста '1234root' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:29:45.448][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 07:29:45.509][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 07:29:45.534][INFO] Click: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 07:29:49.115][INFO] Ожидание отображения элемента 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[30.04.2025 07:29:49.582][INFO] Ожидание отображения элемента 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[30.04.2025 07:29:49.647][INFO] Click: 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[30.04.2025 07:29:52.247][INFO] Ожидание отображения элемента 'Раздел Активные пользователи в админ панеле' локаторы: //div[@class = 'title is-2 mt-4' and contains(text(), 'Активные пользователи ')]</div>
+<div style="color: #000000">[30.04.2025 07:29:52.301][INFO] Ожидание отображения элемента 'Кнопка удалить' локаторы: //div[@class='columns is-vcentered']//*[contains(text(), 'login30042025192938')]//following::button[@class='button is-danger modal-button']</div>
+<div style="color: #000000">[30.04.2025 07:29:52.349][INFO] Ожидание отображения элемента 'Кнопка удалить' локаторы: //div[@class='columns is-vcentered']//*[contains(text(), 'login30042025192938')]//following::button[@class='button is-danger modal-button']</div>
+<div style="color: #000000">[30.04.2025 07:29:52.392][INFO] Click: 'Кнопка удалить' локаторы: //div[@class='columns is-vcentered']//*[contains(text(), 'login30042025192938')]//following::button[@class='button is-danger modal-button']</div>
+<div style="color: #000000">[30.04.2025 07:29:53.527][INFO] Ожидание отображения элемента 'Кнопка подтвердить удаление' локаторы: //div[@class='modal is-active']//button[@class='button is-danger']</div>
+<div style="color: #000000">[30.04.2025 07:29:53.573][INFO] Ожидание отображения элемента 'Кнопка подтвердить удаление' локаторы: //div[@class='modal is-active']//button[@class='button is-danger']</div>
+<div style="color: #000000">[30.04.2025 07:29:53.604][INFO] Click: 'Кнопка подтвердить удаление' локаторы: //div[@class='modal is-active']//button[@class='button is-danger']</div>
+<div style="color: #000000">[30.04.2025 07:29:55.647][INFO] Ожидание отображения элемента 'Кнопка Пользователи' локаторы: //a[@href= '/admin/users']</div>
+<div style="color: #000000">[30.04.2025 07:29:55.691][INFO] Наведение курсора мыши: 'Кнопка Пользователи' локаторы: //a[@href= '/admin/users']</div>
+<div style="color: #000000">[30.04.2025 07:29:57.016][INFO] Ожидание отображения элемента 'Кнопка удаленные пользователи' локаторы: //a[@href= '/admin/users?status=deleted']</div>
+<div style="color: #000000">[30.04.2025 07:29:57.063][INFO] Ожидание отображения элемента 'Кнопка удаленные пользователи' локаторы: //a[@href= '/admin/users?status=deleted']</div>
+<div style="color: #000000">[30.04.2025 07:29:57.097][INFO] Click: 'Кнопка удаленные пользователи' локаторы: //a[@href= '/admin/users?status=deleted']</div>
+<div style="color: #000000">[30.04.2025 07:29:58.963][INFO] Ожидание отображения элемента 'Поле с логином заблокированного пользователя' локаторы: //a[@class='tag is-medium is-link' and contains(text(), 'login30042025192938')]</div>
+<div style="color: #000000">[30.04.2025 07:29:59.003][INFO] Пользователь удален</div>
+<div style="color: #000000">[30.04.2025 07:29:59.491][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[30.04.2025 07:30:03.931][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:30:03.985][INFO] Ввод текста 'login30042025192938' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[30.04.2025 07:30:05.132][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:30:05.177][INFO] Ввод текста 'passwd30042025192938' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[30.04.2025 07:30:06.358][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 07:30:06.426][INFO] Ввод текста '' в элемент: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[30.04.2025 07:30:09.128][INFO] Ожидание отображения элемента 'Сообщение об ошибке' локаторы: //div[@class='notification is-danger']</div>
+<div style="color: #000000">[30.04.2025 07:30:09.168][INFO] Пользователь удален</div>
+<div style="color: #000000">[30.04.2025 07:30:09.169][INFO] ---------------Кейс 'Удаление пользователя через Админ-панель' завершён---------------</div>
