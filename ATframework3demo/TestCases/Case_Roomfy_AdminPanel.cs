@@ -27,7 +27,7 @@ namespace ATframework3demo.TestCases
 
         public Case_Roomfy_AdminPanel()
         {
-            admin = new User{ Login = "admin", Password = "1234root"};
+            admin = new User{ Login = "nastya.redkina.2004@mail.ru", Password = "1234root"};
             newUser = new User{Login = "login" + HelperMethods.GetDateTimeSaltString(), Password = "passwd" + HelperMethods.GetDateTimeSaltString(),};
         }
 
