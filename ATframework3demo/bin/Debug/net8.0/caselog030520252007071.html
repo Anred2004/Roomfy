@@ -1,0 +1,135 @@
+<!DOCTYPE html><div style="color: #000000">[03.05.2025 08:07:07.120][INFO] ---------------Запуск кейса 'Добавление рекламы через Админ-панель'---------------</div>
+<div style="color: #000000">[03.05.2025 08:07:07.137][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[03.05.2025 08:07:14.283][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">use Bitrix\Main\Security\Password;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">function createTestUser($userData) {</div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"NAME"              => $userData['NAME'],</div>
+<div style="color: #000000">"LAST_NAME"         => $userData['LAST_NAME'],</div>
+<div style="color: #000000">"EMAIL"             => $userData['EMAIL'],</div>
+<div style="color: #000000">"LOGIN"             => $userData['LOGIN'],</div>
+<div style="color: #000000">"PASSWORD"          => $userData['PASSWORD'],</div>
+<div style="color: #000000">"CONFIRM_PASSWORD"  => $userData['PASSWORD'],</div>
+<div style="color: #000000">"ACTIVE"            => "Y",</div>
+<div style="color: #000000">"GROUP_ID"          => $userData['GROUP_ID'] ?? [2],</div>
+<div style="color: #000000">"LID"               => "s1",</div>
+<div style="color: #000000">"PERSONAL_GENDER"   => $userData['GENDER'] ?? '',</div>
+<div style="color: #000000">"PERSONAL_PHONE"    => $userData['PHONE'] ?? '',</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$ID = $user->Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ((int)$ID > 0) {</div>
+<div style="color: #000000">echo "Пользователь {$userData['LOGIN']} успешно создан, ID: {$ID}\n";</div>
+<div style="color: #000000">return $ID;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Ошибка при создании пользователя {$userData['LOGIN']}: " . $user->LAST_ERROR . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$users = [</div>
+<div style="color: #000000">[</div>
+<div style="color: #000000">'NAME' => '',</div>
+<div style="color: #000000">'EMAIL' => 'ivanov@example.com',</div>
+<div style="color: #000000">'LOGIN' => 'login03052025200656',</div>
+<div style="color: #000000">'PASSWORD' => 'passwd03052025200656'</div>
+<div style="color: #000000">]</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$createdUsers = [];</div>
+<div style="color: #000000">foreach ($users as $userData) {</div>
+<div style="color: #000000">$userId = createTestUser($userData);</div>
+<div style="color: #000000">if ($userId) {</div>
+<div style="color: #000000">$createdUsers[] = $userId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">echo "Создано пользователей: " . count($createdUsers) . "\n";</div>
+<div style="color: #000000">echo "ID созданных пользователей: " . implode(', ', $createdUsers) . "\n";</div>
+<div style="color: #000000">[03.05.2025 08:07:15.664][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь login03052025200656 успешно создан, ID: 86</div>
+<div style="color: #000000">Создано пользователей: 1</div>
+<div style="color: #000000">ID созданных пользователей: 86</div>
+<div style="color: #000000">[03.05.2025 08:07:15.674][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:15.734][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:15.766][INFO] Ввод текста '' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:16.858][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:16.893][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:18.009][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:18.059][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:18.130][INFO] Ввод текста '' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:19.220][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:19.248][INFO] Ввод текста '1234root' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:20.343][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:07:20.377][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:07:20.404][INFO] Click: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:07:25.968][INFO] Ожидание отображения элемента 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[03.05.2025 08:07:26.036][INFO] Ожидание отображения элемента 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[03.05.2025 08:07:26.059][INFO] Click: 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[03.05.2025 08:07:32.010][INFO] Ожидание отображения элемента 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:07:32.047][INFO] Наведение курсора мыши: 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:07:33.360][INFO] Ожидание отображения элемента 'Кнопка Добавить рекламу' локаторы: //a[@href= '/admin/add-advert']</div>
+<div style="color: #000000">[03.05.2025 08:07:33.393][INFO] Ожидание отображения элемента 'Кнопка Добавить рекламу' локаторы: //a[@href= '/admin/add-advert']</div>
+<div style="color: #000000">[03.05.2025 08:07:33.415][INFO] Click: 'Кнопка Добавить рекламу' локаторы: //a[@href= '/admin/add-advert']</div>
+<div style="color: #000000">[03.05.2025 08:07:35.325][INFO] Ожидание отображения элемента 'Поле для рекламной ссылки' локаторы: //input[@type = 'url']</div>
+<div style="color: #000000">[03.05.2025 08:07:35.364][INFO] Ожидание отображения элемента 'Поле для рекламной ссылки' локаторы: //input[@type = 'url']</div>
+<div style="color: #000000">[03.05.2025 08:07:35.387][INFO] Ввод текста 'https://www.bitrix2403052025200714.ru/' в элемент: 'Поле для рекламной ссылки' локаторы: //input[@type = 'url']</div>
+<div style="color: #000000">[03.05.2025 08:07:36.554][INFO] Ожидание отображения элемента 'Поле даты окончания рекламы' локаторы: //input[@id= 'endDate']</div>
+<div style="color: #000000">[03.05.2025 08:07:36.591][INFO] Ожидание отображения элемента 'Поле даты окончания рекламы' локаторы: //input[@id= 'endDate']</div>
+<div style="color: #000000">[03.05.2025 08:07:36.614][INFO] Ввод текста '02022026' в элемент: 'Поле даты окончания рекламы' локаторы: //input[@id= 'endDate']</div>
+<div style="color: #000000">[03.05.2025 08:07:37.727][INFO] Ожидание отображения элемента 'Лейбл формы фото баннера' локаторы: //span[@class = 'file-label']</div>
+<div style="color: #000000">[03.05.2025 08:07:37.773][INFO] Ожидание отображения элемента 'Кнопка добавления фото баннера' локаторы: //input[@class= 'file-input']</div>
+<div style="color: #000000">[03.05.2025 08:07:42.924][INFO] Достигнут таймаут ожидания</div>
+<div style="color: #000000">[03.05.2025 08:07:42.928][INFO] Ввод текста 'C:\photo\example.jpg' в элемент: 'Кнопка добавления фото баннера' локаторы: //input[@class= 'file-input']</div>
+<div style="color: #000000">[03.05.2025 08:07:43.993][INFO] Ожидание отображения элемента 'Кнопка Опубликовать' локаторы: //button[@type = 'submit']</div>
+<div style="color: #000000">[03.05.2025 08:07:44.028][INFO] Ожидание отображения элемента 'Кнопка Опубликовать' локаторы: //button[@type = 'submit']</div>
+<div style="color: #000000">[03.05.2025 08:07:44.050][INFO] Click: 'Кнопка Опубликовать' локаторы: //button[@type = 'submit']</div>
+<div style="color: #000000">[03.05.2025 08:07:46.578][INFO] Ожидание отображения элемента 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:07:46.613][INFO] Наведение курсора мыши: 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:07:47.920][INFO] Ожидание отображения элемента 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:07:47.943][INFO] Click: 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:07:49.827][INFO] Ожидание отображения элемента 'Сообщение об ошибке' локаторы: //th[text()='https://www.bitrix2403052025200714.ru/']</div>
+<div style="color: #000000">[03.05.2025 08:07:49.867][INFO] Реклама успешно добавлена</div>
+<div style="color: #000000">[03.05.2025 08:07:50.988][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[03.05.2025 08:07:57.176][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:57.218][INFO] Ввод текста 'login03052025200656' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:07:58.352][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:58.383][INFO] Ввод текста 'passwd03052025200656' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:07:59.526][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:07:59.562][INFO] Ввод текста '' в элемент: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:08:02.401][INFO] Ожидание отображения элемента 'Ссылка на баннер на главной странице' локаторы: //a[@href = 'https://www.bitrix2403052025200714.ru/']</div>
+<div style="color: #000000">[03.05.2025 08:08:02.795][INFO] Реклама успешно добавлена</div>
+<div style="color: #000000">[03.05.2025 08:08:04.159][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[03.05.2025 08:08:09.989][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:08:10.026][INFO] Ввод текста 'nastya.redkina.2004@mail.ru' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:08:11.158][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:08:11.187][INFO] Ввод текста '1234root' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:08:12.316][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:08:12.359][INFO] Ввод текста '' в элемент: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:08:15.489][INFO] Ожидание отображения элемента 'Кнопка главная страница' локаторы: //a[@href = '/']</div>
+<div style="color: #000000">[03.05.2025 08:08:15.829][INFO] Ожидание отображения элемента 'Раздел Чат на главной странице' локаторы: //a[@href = '/chat']</div>
+<div style="color: #000000">[03.05.2025 08:08:15.903][INFO] Click: 'Раздел Чат на главной странице' локаторы: //a[@href = '/chat']</div>
+<div style="color: #000000">[03.05.2025 08:08:18.107][INFO] Ожидание отображения элемента 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[03.05.2025 08:08:18.154][INFO] Ожидание отображения элемента 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[03.05.2025 08:08:18.176][INFO] Click: 'Кнопка Админ панель' локаторы: //a[@href= '/admin']</div>
+<div style="color: #000000">[03.05.2025 08:08:20.249][INFO] Ожидание отображения элемента 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:08:20.280][INFO] Наведение курсора мыши: 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:08:21.582][INFO] Ожидание отображения элемента 'Кнопка Добавить рекламу' локаторы: //a[@href= '/admin/add-advert']</div>
+<div style="color: #000000">[03.05.2025 08:08:21.613][INFO] Ожидание отображения элемента 'Кнопка Добавить рекламу' локаторы: //a[@href= '/admin/add-advert']</div>
+<div style="color: #000000">[03.05.2025 08:08:21.634][INFO] Click: 'Кнопка Добавить рекламу' локаторы: //a[@href= '/admin/add-advert']</div>
+<div style="color: #000000">[03.05.2025 08:08:23.395][INFO] Ожидание отображения элемента 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:08:23.424][INFO] Наведение курсора мыши: 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:08:24.730][INFO] Ожидание отображения элемента 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:08:24.755][INFO] Click: 'Кнопка Реклама' локаторы: //a[@href= '/admin/ads']</div>
+<div style="color: #000000">[03.05.2025 08:08:26.586][INFO] Ожидание отображения элемента 'Кнопка удаления рекламы' локаторы: //i[@class = 'fa-solid fa-trash']</div>
+<div style="color: #000000">[03.05.2025 08:08:26.630][INFO] Ожидание отображения элемента 'Кнопка удаления рекламы' локаторы: //i[@class = 'fa-solid fa-trash']</div>
+<div style="color: #000000">[03.05.2025 08:08:26.655][INFO] Click: 'Кнопка удаления рекламы' локаторы: //i[@class = 'fa-solid fa-trash']</div>
+<div style="color: #000000">[03.05.2025 08:08:27.770][INFO] Ожидание отображения элемента 'Кнопка подтверждения удаления рекламы' локаторы: //button[@class = 'button is-danger' and contains(text(), 'Удалить')]</div>
+<div style="color: #000000">[03.05.2025 08:08:27.802][INFO] Ожидание отображения элемента 'Кнопка подтверждения удаления рекламы' локаторы: //button[@class = 'button is-danger' and contains(text(), 'Удалить')]</div>
+<div style="color: #000000">[03.05.2025 08:08:27.826][INFO] Click: 'Кнопка подтверждения удаления рекламы' локаторы: //button[@class = 'button is-danger' and contains(text(), 'Удалить')]</div>
+<div style="color: #000000">[03.05.2025 08:08:29.628][INFO] ---------------Кейс 'Добавление рекламы через Админ-панель' завершён---------------</div>

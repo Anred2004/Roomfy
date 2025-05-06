@@ -3,6 +3,62 @@
   "WorkspaceRootPath": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\addblurbpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\addblurbpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\baseloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\baseloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\blockedadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\blockedadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\blurbpostspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\blurbpostspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\chatpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\chatpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\confirmblockform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\confirmblockform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\confirmdeleteform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\confirmdeleteform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\deletedadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\deletedadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\digspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\digspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\homeadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\homeadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\portalhomepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\portalhomepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\portalloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\portalloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\registrypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\registrypage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\pageobjects\\roomfyhomepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\pageobjects\\roomfyhomepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|c:\\users\\\u0441\u0435\u0440\u0433\u0435\u0439\\desktop\\roomfy\\atframework3demo\\testcases\\case_roomfy_adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0B87D70C-4E3C-4930-BC8F-E486A8ACF0F1}|ATframework3demo\\ATframework3demo.csproj|solutionrelative:atframework3demo\\testcases\\case_roomfy_adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,19 +70,202 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 14,
               "Title": "Case_Roomfy_AdminPanel.cs",
               "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\TestCases\\Case_Roomfy_AdminPanel.cs",
               "RelativeDocumentMoniker": "ATframework3demo\\TestCases\\Case_Roomfy_AdminPanel.cs",
               "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\TestCases\\Case_Roomfy_AdminPanel.cs",
               "RelativeToolTip": "ATframework3demo\\TestCases\\Case_Roomfy_AdminPanel.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAD4vz8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T19:48:40.012Z",
+              "WhenOpened": "2025-05-06T00:30:01.239Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddBlurbPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\AddBlurbPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\AddBlurbPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\AddBlurbPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\AddBlurbPage.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:03:06.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BaseLoginPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\BaseLoginPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\BaseLoginPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\BaseLoginPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\BaseLoginPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:03:01.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BlockedAdminPanel.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\BlockedAdminPanel.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\BlockedAdminPanel.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\BlockedAdminPanel.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\BlockedAdminPanel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:54.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BlurbPostsPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\BlurbPostsPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\BlurbPostsPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\BlurbPostsPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\BlurbPostsPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:45.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChatPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\ChatPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\ChatPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\ChatPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\ChatPage.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:34.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ConfirmBlockForm.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\ConfirmBlockForm.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\ConfirmBlockForm.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\ConfirmBlockForm.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\ConfirmBlockForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:26.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ConfirmDeleteForm.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\ConfirmDeleteForm.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\ConfirmDeleteForm.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\ConfirmDeleteForm.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\ConfirmDeleteForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:18.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DeletedAdminPanel.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\DeletedAdminPanel.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\DeletedAdminPanel.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\DeletedAdminPanel.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\DeletedAdminPanel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:13.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DigsPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\DigsPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\DigsPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\DigsPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\DigsPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:02:05.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeAdminPanel.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\HomeAdminPanel.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\HomeAdminPanel.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\HomeAdminPanel.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\HomeAdminPanel.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAIwDgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:01:48.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PortalHomePage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\PortalHomePage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\PortalHomePage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\PortalHomePage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\PortalHomePage.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAcwEkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:01:24.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PortalLoginPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\PortalLoginPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\PortalLoginPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\PortalLoginPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\PortalLoginPage.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:01:16.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RoomfyHomePage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\RoomfyHomePage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\RoomfyHomePage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\RoomfyHomePage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\RoomfyHomePage.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:00:16.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RegistryPage.cs",
+              "DocumentMoniker": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\RegistryPage.cs",
+              "RelativeDocumentMoniker": "ATframework3demo\\PageObjects\\RegistryPage.cs",
+              "ToolTip": "C:\\Users\\\u0421\u0435\u0440\u0433\u0435\u0439\\Desktop\\roomfy\\ATframework3demo\\PageObjects\\RegistryPage.cs",
+              "RelativeToolTip": "ATframework3demo\\PageObjects\\RegistryPage.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T01:00:11.514Z",
               "EditorCaption": ""
             }
           ]

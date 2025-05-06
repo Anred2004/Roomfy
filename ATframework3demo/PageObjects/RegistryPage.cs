@@ -14,26 +14,21 @@ namespace ATframework3demo.PageObjects
         WebItem emailField => new WebItem($"//input[@name = 'USER_EMAIL']", "Поле Email");
         WebItem btnRegistry => new WebItem($"//button[@name = 'Register']", "Кнопка Зарегистрироваться");
 
-
-
         public RoomfyHomePage Register(User userDate)
         {
-            loginField.WaitElementDisplayed(60);
+            loginField.WaitElementDisplayed(20);
             loginField.SendKeys(userDate.Login);
-            passwrdField.WaitElementDisplayed(60);
+            passwrdField.WaitElementDisplayed(20);
             passwrdField.SendKeys(userDate.Password);
-            confirmPasswrdField.WaitElementDisplayed(60);
+            confirmPasswrdField.WaitElementDisplayed(20);
             confirmPasswrdField.SendKeys(userDate.Password);
-            emailField.WaitElementDisplayed(60);
+            emailField.WaitElementDisplayed(20);
             emailField.SendKeys(userDate.Email);
-            btnRegistry.WaitElementDisplayed(60);
+            btnRegistry.WaitElementDisplayed(20);
             btnRegistry.Click();
             
 
             return new RoomfyHomePage();
         }
-
-
-
     }
 }

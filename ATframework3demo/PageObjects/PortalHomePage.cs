@@ -17,23 +17,21 @@ namespace atFrameWork2.PageObjects
         {
             Driver = driver;
         }
-
         WebItem btnChat => new WebItem("//a[@href = '/chat']", "Раздел Чат на главной странице");
         WebItem btnHome => new WebItem("//a[@href = '/']", "Кнопка главная страница");
-
+        WebItem btnRegistry => new WebItem("//a[@href = '/register']", "Кнопка регистрации");
+        WebItem loginField => new WebItem("//input[@name = 'USER_LOGIN']", "Поле Логин");
+        WebItem passwrdField => new WebItem("//input[@name = 'USER_PASSWORD']", "Поле Пароль");
+        WebItem btnEnter => new WebItem("//button[@name = 'Login']", "Кнопка Войти");
+        WebItem checkErrorUser => new WebItem("//div[@class='notification is-danger']", "Сообщение об ошибке");
         public RegistryPage OpenRegistryPage()
         {
-            var btnRegistry = new WebItem("//a[@href = '/register']", "Кнопка регистрации");
             btnRegistry.WaitElementDisplayed(20);
             btnRegistry.Click();
             return new RegistryPage();
         }
-
         public RoomfyHomePage Auth(User userData)
         {
-            var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле Логин");
-            var passwrdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле Пароль");
-            var btnEnter = new WebItem("//button[@name = 'Login']", "Кнопка Войти");
             loginField.WaitElementDisplayed(20);
             loginField.SendKeys(userData.Login);
             passwrdField.WaitElementDisplayed(20);
@@ -43,7 +41,6 @@ namespace atFrameWork2.PageObjects
 
             return new RoomfyHomePage();
         }
-
         public ChatPage GoToChat()
         {
             btnChat.WaitElementDisplayed(20);
@@ -51,17 +48,14 @@ namespace atFrameWork2.PageObjects
 
             return new ChatPage();
         }
-
         public bool СheckError()
         {
-            var checkErrorUser = new WebItem("//div[@class='notification is-danger']", "Сообщение об ошибке");
             if (checkErrorUser.WaitElementDisplayed() == false)
             {
                 return false;
             }
             return true;
         }
-
         public bool IsBlurbDisplayed(RoomfyPromotion link)
         {
             var checkBlurvDisplayed = new WebItem($"//a[@href = '{link.Link}']", "Ссылка на баннер на главной странице");
@@ -71,7 +65,6 @@ namespace atFrameWork2.PageObjects
             }
             return true;
         }
-
         public RoomfyHomePage GoToHomePage()
         {
             btnHome.WaitElementDisplayed(20);
@@ -79,6 +72,5 @@ namespace atFrameWork2.PageObjects
 
             return new RoomfyHomePage();
         }
-
     }
 }

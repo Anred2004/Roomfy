@@ -1,0 +1,73 @@
+<!DOCTYPE html><div style="color: #000000">[03.05.2025 08:02:25.664][INFO] ---------------Запуск кейса 'Авторизация пользователя'---------------</div>
+<div style="color: #000000">[03.05.2025 08:02:25.670][INFO] OpenUri: http://roomfy.bx/</div>
+<div style="color: #000000">[03.05.2025 08:02:32.463][INFO] Попытка выполнить php:</div>
+<div style="color: #000000">require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">use Bitrix\Main\Security\Password;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">function createTestUser($userData) {</div>
+<div style="color: #000000">$user = new CUser;</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$arFields = [</div>
+<div style="color: #000000">"NAME"              => $userData['NAME'],</div>
+<div style="color: #000000">"LAST_NAME"         => $userData['LAST_NAME'],</div>
+<div style="color: #000000">"EMAIL"             => $userData['EMAIL'],</div>
+<div style="color: #000000">"LOGIN"             => $userData['LOGIN'],</div>
+<div style="color: #000000">"PASSWORD"          => $userData['PASSWORD'],</div>
+<div style="color: #000000">"CONFIRM_PASSWORD"  => $userData['PASSWORD'],</div>
+<div style="color: #000000">"ACTIVE"            => "Y",</div>
+<div style="color: #000000">"GROUP_ID"          => $userData['GROUP_ID'] ?? [2],</div>
+<div style="color: #000000">"LID"               => "s1",</div>
+<div style="color: #000000">"PERSONAL_GENDER"   => $userData['GENDER'] ?? '',</div>
+<div style="color: #000000">"PERSONAL_PHONE"    => $userData['PHONE'] ?? '',</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$ID = $user->Add($arFields);</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">if ((int)$ID > 0) {</div>
+<div style="color: #000000">echo "Пользователь {$userData['LOGIN']} успешно создан, ID: {$ID}\n";</div>
+<div style="color: #000000">return $ID;</div>
+<div style="color: #000000">} else {</div>
+<div style="color: #000000">echo "Ошибка при создании пользователя {$userData['LOGIN']}: " . $user->LAST_ERROR . "\n";</div>
+<div style="color: #000000">return false;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">$users = [</div>
+<div style="color: #000000">[</div>
+<div style="color: #000000">'NAME' => '',</div>
+<div style="color: #000000">'EMAIL' => 'ivanov@example.com',</div>
+<div style="color: #000000">'LOGIN' => 'login03052025200223',</div>
+<div style="color: #000000">'PASSWORD' => 'passwd03052025200223'</div>
+<div style="color: #000000">]</div>
+<div style="color: #000000">];</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">$createdUsers = [];</div>
+<div style="color: #000000">foreach ($users as $userData) {</div>
+<div style="color: #000000">$userId = createTestUser($userData);</div>
+<div style="color: #000000">if ($userId) {</div>
+<div style="color: #000000">$createdUsers[] = $userId;</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000">}</div>
+<div style="color: #000000"></div>
+<div style="color: #000000">echo "Создано пользователей: " . count($createdUsers) . "\n";</div>
+<div style="color: #000000">echo "ID созданных пользователей: " . implode(', ', $createdUsers) . "\n";</div>
+<div style="color: #000000">[03.05.2025 08:02:33.806][INFO] Результат выполнения php:</div>
+<div style="color: #000000">Пользователь login03052025200223 успешно создан, ID: 84</div>
+<div style="color: #000000">Создано пользователей: 1</div>
+<div style="color: #000000">ID созданных пользователей: 84</div>
+<div style="color: #000000">[03.05.2025 08:02:33.813][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:02:33.861][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:02:33.888][INFO] Ввод текста '' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:02:34.957][INFO] Ожидание отображения элемента 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:02:34.983][INFO] Ввод текста 'login03052025200223' в элемент: 'Поле Логин' локаторы: //input[@name = 'USER_LOGIN']</div>
+<div style="color: #000000">[03.05.2025 08:02:36.096][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:02:36.141][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:02:36.168][INFO] Ввод текста '' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:02:37.289][INFO] Ожидание отображения элемента 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:02:37.326][INFO] Ввод текста 'passwd03052025200223' в элемент: 'Поле Пароль' локаторы: //input[@name = 'USER_PASSWORD']</div>
+<div style="color: #000000">[03.05.2025 08:02:38.450][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:02:38.484][INFO] Ожидание отображения элемента 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:02:38.510][INFO] Click: 'Кнопка Войти' локаторы: //button[@name = 'Login']</div>
+<div style="color: #000000">[03.05.2025 08:02:41.356][INFO] Ожидание отображения элемента 'Кнопка перехода на главную страницу' локаторы: //a[@class = 'navbar-item' and contains(text(), 'Главная')]</div>
+<div style="color: #000000">[03.05.2025 08:02:41.900][INFO] Пользователь успешно авторизован</div>
+<div style="color: #000000">[03.05.2025 08:02:41.901][INFO] ---------------Кейс 'Авторизация пользователя' завершён---------------</div>

@@ -14,6 +14,5 @@ namespace ATframework3demo.PageObjects
             }
             return true;
         }
-
     }
 }

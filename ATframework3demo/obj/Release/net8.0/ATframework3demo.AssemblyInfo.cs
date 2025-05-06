@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ATframework3demo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a059b1bf31124a0afc2a2819ac8126e7e1fe68b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ATframework3demo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ATframework3demo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

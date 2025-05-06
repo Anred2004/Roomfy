@@ -13,14 +13,13 @@ namespace ATframework3demo.PageObjects
         {
             Driver = driver;
         }
-
         WebItem btnDigsActive => new WebItem("//li[@class='tab-btn is-active ' and @data-tab='find_flat']", "Раздел Жилье активный");
         WebItem btnDigsInactive => new WebItem("//li[@class='tab-btn ' and @data-tab='find_flat']", "Раздел Жилье неактивный");
         WebItem btnAdminPanel => new WebItem("//a[@href= '/admin']", "Кнопка Админ панель");
+        WebItem checkRegistry => new WebItem($"//a[@class = 'navbar-item' and contains(text(), 'Главная')]", "Кнопка перехода на главную страницу");
 
         public bool IsUserRegister()
         {
-            var checkRegistry = new WebItem($"//a[@class = 'navbar-item' and contains(text(), 'Главная')]", "Кнопка перехода на главную страницу");
             if (checkRegistry.WaitElementDisplayed() == false)
             {
                 return false;
@@ -47,9 +46,6 @@ namespace ATframework3demo.PageObjects
 
             return new HomeAdminPanel();
         }
-
-
-
 
     }
 }

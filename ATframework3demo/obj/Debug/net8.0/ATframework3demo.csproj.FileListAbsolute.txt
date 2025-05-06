@@ -99,3 +99,4 @@ C:\Users\Сергей\Desktop\roomfy\ATframework3demo\obj\Debug\net8.0\staticweb
 C:\Users\Сергей\Desktop\roomfy\ATframework3demo\obj\Debug\net8.0\ATframew.6736FD0F.Up2Date
 C:\Users\Сергей\Desktop\roomfy\ATframework3demo\obj\Debug\net8.0\ATframework3demo.genruntimeconfig.cache
 C:\Users\Сергей\Desktop\roomfy\ATframework3demo\obj\Debug\net8.0\ref\ATframework3demo.dll
+C:\Users\Сергей\Desktop\roomfy\ATframework3demo\obj\Debug\net8.0\ATframework3demo.sourcelink.json
