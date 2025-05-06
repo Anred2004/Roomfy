@@ -114,13 +114,15 @@ namespace ATframework3demo.TestCases
 
         void AddBlurb(PortalHomePage homePage)
         {
+            var imagePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Resources", "example.jpg");
+
             var blurb = new RoomfyPromotion
             { 
                 Link = "https://www.bitrix24" + HelperMethods.GetDateTimeSaltString() + ".ru/",
                 Date = "02022026",
-                Path = "C:\\photo\\example.jpg"
+                Path = imagePath
             };
-  
+
             newUser.CreateUser(TestCase.RunningTestCase.TestPortal);
 
             var authPage = homePage.
