@@ -24,7 +24,7 @@ namespace atFrameWork2.PageObjects
         public RegistryPage OpenRegistryPage()
         {
             var btnRegistry = new WebItem("//a[@href = '/register']", "Кнопка регистрации");
-            btnRegistry.WaitElementDisplayed(60);
+            btnRegistry.WaitElementDisplayed(20);
             btnRegistry.Click();
             return new RegistryPage();
         }
@@ -34,13 +34,11 @@ namespace atFrameWork2.PageObjects
             var loginField = new WebItem("//input[@name = 'USER_LOGIN']", "Поле Логин");
             var passwrdField = new WebItem("//input[@name = 'USER_PASSWORD']", "Поле Пароль");
             var btnEnter = new WebItem("//button[@name = 'Login']", "Кнопка Войти");
-            loginField.WaitElementDisplayed(60);
-            loginField.SendKeys(Keys.Clear);
+            loginField.WaitElementDisplayed(20);
             loginField.SendKeys(userData.Login);
-            passwrdField.WaitElementDisplayed(60);
-            passwrdField.SendKeys(Keys.Clear);
+            passwrdField.WaitElementDisplayed(20);
             passwrdField.SendKeys(userData.Password);
-            btnEnter.WaitElementDisplayed(60);
+            btnEnter.WaitElementDisplayed(20);
             btnEnter.Click();
 
             return new RoomfyHomePage();
@@ -48,7 +46,7 @@ namespace atFrameWork2.PageObjects
 
         public ChatPage GoToChat()
         {
-            btnChat.WaitElementDisplayed(60);
+            btnChat.WaitElementDisplayed(20);
             btnChat.Click();
 
             return new ChatPage();
@@ -76,7 +74,7 @@ namespace atFrameWork2.PageObjects
 
         public RoomfyHomePage GoToHomePage()
         {
-            btnHome.WaitElementDisplayed(60);
+            btnHome.WaitElementDisplayed(20);
             btnChat.Click();
 
             return new RoomfyHomePage();
