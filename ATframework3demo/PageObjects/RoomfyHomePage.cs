@@ -33,7 +33,7 @@ namespace ATframework3demo.PageObjects
 
             if (btnDigsActive.WaitElementDisplayed(10) == false)
             {
-                btnDigsInactive.WaitElementDisplayed(60);
+                btnDigsInactive.WaitElementDisplayed(20);
                 btnDigsInactive.Click();
             }
             return new DigsPage();
@@ -42,7 +42,7 @@ namespace ATframework3demo.PageObjects
         public HomeAdminPanel GoToAdminPanel()
         {
 
-            btnAdminPanel.WaitElementDisplayed(60);
+            btnAdminPanel.WaitElementDisplayed(20);
             btnAdminPanel.Click();
 
             return new HomeAdminPanel();
